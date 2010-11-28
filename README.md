@@ -22,7 +22,7 @@ Exhaustive list of supported validators:
 
 * `email` : checks the email based on the `mail` gem
 * `url`   : checks the url based on a regular expression
-
+* `phone` : checks the phone number based on a regular expression
 
 Todo
 ----

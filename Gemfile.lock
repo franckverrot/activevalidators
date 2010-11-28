@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ActiveValidators (1.0.0)
+    activevalidators (1.0.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       mail
@@ -46,9 +46,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ActiveValidators!
   activemodel (>= 3.0.0)
   activerecord (>= 3.0.0)
+  activevalidators!
   bundler
   mail
   rspec

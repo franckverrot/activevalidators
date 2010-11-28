@@ -10,5 +10,6 @@ module ActiveModel
     autoload :EmailValidator
     autoload :UrlValidator
     autoload :RespondToValidator
+    autoload :PhoneValidator
   end
 end
