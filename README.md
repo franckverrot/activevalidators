@@ -29,7 +29,7 @@ Todo
 
 Lots of improvements can be made:
 
-* Add I18n of error messages
+* Add I18n specific types of error messages for each validator
 * Implement new validators
 * ...
 

@@ -6,7 +6,7 @@ module ActiveModel
         responders = options.dup
         RESERVED_OPTIONS.each do |opt,should_apply| responders.delete(opt) end
         responders.each do |method,dummy|
-          record.errors[attribute] << (options[:message] || "is invalid") unless value.respond_to? method
+          record.errors.add(attribute) unless value.respond_to? method
         end
       end
     end

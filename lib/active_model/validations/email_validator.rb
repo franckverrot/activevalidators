@@ -11,7 +11,7 @@ module ActiveModel
         rescue Exception => e
           r = false
         end
-        record.errors[attribute] << (options[:message] || "is invalid") unless r
+        record.errors.add(attribute) unless r
       end
     end
   end

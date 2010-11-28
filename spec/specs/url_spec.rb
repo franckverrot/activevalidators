@@ -8,10 +8,21 @@ describe "Url Validation" do
     model.should have(0).errors
   end
 
-  it "rejected invalid urls" do
-    model = Models::UrlValidatorModel.new
-    model.url = 'http://^^^^.fr'
-    model.valid?.should be(false)
-    model.should have(1).errors
+  describe "for invalid emails" do
+    let(:model) do
+      Models::UrlValidatorModel.new.tap do |m|
+        m.url = 'http://^^^^.fr'
+      end
+    end
+
+    it "rejects invalid emails" do
+      model.valid?.should be(false)
+      model.should have(1).errors
+    end
+
+    it "generates an error message of type invalid" do
+      model.valid?.should be(false)
+      model.errors[:url].should == [model.errors.generate_message(:url, :invalid)]
+    end
   end
 end
