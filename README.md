@@ -3,6 +3,36 @@ ActiveValidators
 
 Collection of ActiveModel/ActiveRecord validations
 
+Installation (Rails 3)
+----------------------
+
+In your Gemfile:
+
+    gem 'activevalidators'
+
+
+In your models, the gem provides new validators like `email`, or `url`:
+
+    class User
+      validates :email_address, :email => true
+      validates :link_url,      :url   => true
+    end
+
+Exhaustive list of supported validators:
+
+* `email` : checks the email based on the `mail` gem
+* `url`   : checks the url based on a regular expression
+
+
+Todo
+----
+
+Lots of improvements can be made:
+
+* Add I18n of error messages
+* Implement new validators
+* ...
+
 Note on Patches/Pull Requests
 -----------------------------
 
@@ -17,4 +47,4 @@ Note on Patches/Pull Requests
 Copyright
 ---------
 
-Copyright (c) 2010 Franck Verrot. See LICENSE for details.
+Copyright (c) 2010 Franck Verrot. MIT LICENSE. See LICENSE for details.
