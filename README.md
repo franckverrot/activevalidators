@@ -8,7 +8,7 @@ Installation (Rails 3)
 
 In your Gemfile:
 
-    gem 'activevalidators'
+    gem 'activevalidators', :require => 'active_validators'
 
 
 In your models, the gem provides new validators like `email`, or `url`:
