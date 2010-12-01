@@ -1,4 +1,4 @@
-require 'active_validators'
+require 'activevalidators'
 
 %w(models).each do |directory|
   Dir["#{File.dirname(__FILE__)}/#{directory}/*.rb"].each {|f| require f}

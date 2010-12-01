@@ -3,7 +3,7 @@ $:.unshift File.expand_path("../lib", __FILE__)
 
 require 'rubygems'
 require 'rubygems/specification'
-require 'active_validators'
+require 'activevalidators'
 
 def gemspec
   @gemspec ||= begin
