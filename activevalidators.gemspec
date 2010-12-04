@@ -19,8 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'activerecord', '>= 3.0.0'
   s.add_dependency 'activemodel', '>= 3.0.0'
   s.add_dependency 'mail'
-  s.add_dependency 'luhnacy', '= 0.2.1'
-
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")
