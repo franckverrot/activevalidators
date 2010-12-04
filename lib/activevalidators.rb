@@ -14,5 +14,6 @@ module ActiveModel
     autoload :SlugValidator
     autoload :IpValidator
     autoload :CreditCardValidator
+    autoload :DateValidator, 'date_validator'
   end
 end

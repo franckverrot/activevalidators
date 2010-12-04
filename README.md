@@ -24,6 +24,11 @@ In your models, the gem provides new validators like `email`, or `url`:
 
     class Article
       validates :slug,          :slug => true
+      validates :expiration_date,
+                      :date => {
+                                 :after => lambda { Time.now },
+                                 :before => lambda { Time.now + 1.year }
+                               }
     end
 
     class Device
@@ -34,6 +39,7 @@ In your models, the gem provides new validators like `email`, or `url`:
     class Account
       validates :visa_card,     :credit_card => { :type => :visa }
       validates :credit_card,   :credit_card => { :type => :all  }
+    end
 
 
 Exhaustive list of supported validators and their implementation:
@@ -44,6 +50,7 @@ Exhaustive list of supported validators and their implementation:
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
 * `credit_card` : based on the `Luhnacy` gem
+* `date`  : based on the `DateValidator` gem
 
 Todo
 ----
