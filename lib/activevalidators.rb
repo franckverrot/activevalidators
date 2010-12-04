@@ -12,5 +12,6 @@ module ActiveModel
     autoload :RespondToValidator
     autoload :PhoneValidator
     autoload :SlugValidator
+    autoload :IpValidator
   end
 end

@@ -26,12 +26,19 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :slug,         :slug => true
     end
 
+    class Device
+      validates :ipv6,         :ip => { :format => :v6 }
+      validates :ipv4,         :ip => { :format => :v4 }
+    end
+
+
 Exhaustive list of supported validators and their implementation:
 
 * `email` : based on the `mail` gem
 * `url`   : based on a regular expression
 * `phone` : based on a regular expression
 * `slug`  : based on `ActiveSupport::String#parameterize`
+* `ip`    : based on `Resolv::IPv[4|6]::Regex`
 
 Todo
 ----
