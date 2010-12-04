@@ -23,13 +23,17 @@ In your models, the gem provides new validators like `email`, or `url`:
     end
 
     class Article
-      validates :slug,         :slug => true
+      validates :slug,          :slug => true
     end
 
     class Device
-      validates :ipv6,         :ip => { :format => :v6 }
-      validates :ipv4,         :ip => { :format => :v4 }
+      validates :ipv6,          :ip => { :format => :v6 }
+      validates :ipv4,          :ip => { :format => :v4 }
     end
+
+    class Account
+      validates :visa_card,     :credit_card => { :type => :visa }
+      validates :credit_card,   :credit_card => { :type => :all  }
 
 
 Exhaustive list of supported validators and their implementation:
@@ -39,6 +43,7 @@ Exhaustive list of supported validators and their implementation:
 * `phone` : based on a regular expression
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
+* `credit_card` : based on the `Luhnacy` gem
 
 Todo
 ----

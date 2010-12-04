@@ -13,5 +13,6 @@ module ActiveModel
     autoload :PhoneValidator
     autoload :SlugValidator
     autoload :IpValidator
+    autoload :CreditCardValidator
   end
 end
