@@ -9,5 +9,5 @@ end
 
 class TestRecord
   include ActiveModel::Validations
-  attr_accessor :ipv4, :ipv6, :url, :slug, :responder, :global_condition, :local_condition, :phone, :email, :card
+  attr_accessor :ip, :url, :slug, :responder, :global_condition, :local_condition, :phone, :email, :card
 end
