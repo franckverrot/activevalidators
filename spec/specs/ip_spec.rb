@@ -17,12 +17,12 @@ describe "IP Validation" do
       end
 
       it "rejects invalid IPs" do
-        model.valid?.should be(false)
+        model.should_not be_valid
         model.should have(1).errors
       end
 
       it "generates an error message of type invalid" do
-        model.valid?.should be(false)
+        model.should_not be_valid
         model.errors[:ipv4].should == [model.errors.generate_message(:ipv4, :invalid)]
       end
     end
