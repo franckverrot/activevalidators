@@ -14,12 +14,24 @@ describe "Email Validation" do
     subject.should have(0).errors
   end
 
+  it "accepts complete emails" do
+    subject.email = 'Mikel Lindsaar (My email address) <mikel@test.lindsaar.net>'
+    subject.should be_valid
+    subject.should have(0).errors
+  end
+
   describe "for invalid emails" do
     before :each do
       subject.email = 'franck.fr'
     end
 
     it "rejects invalid emails" do
+      subject.should_not be_valid
+      subject.should have(1).error
+    end
+
+    it 'rejects local emails' do
+      subject.email = 'franck'
       subject.should_not be_valid
       subject.should have(1).error
     end

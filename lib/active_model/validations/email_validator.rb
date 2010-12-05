@@ -4,14 +4,14 @@ module ActiveModel
     class EmailValidator < EachValidator
       def validate_each(record,attribute,value)
         begin
-          m = Mail::Address.new(value)
-          r = m.domain && m.address == value
-          t = m.__send__(:tree)
-          r &&= (t.domain.dot_atom_text.elements.size > 1)
-        rescue Exception => e
-          r = false
+          address = Mail::Address.new(value)
+          valid = address.domain && value.include?(address.address)
+          tree = address.send(:tree)
+          valid &&= (tree.domain.dot_atom_text.elements.size > 1)
+        rescue Mail::Field::ParseError
+          valid = false
         end
-        record.errors.add(attribute) unless r
+        record.errors.add(attribute) unless valid
       end
     end
   end
