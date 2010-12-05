@@ -14,6 +14,12 @@ describe "Url Validation" do
     subject.should have(0).errors
   end
 
+  it "accepts valid SSL urls" do
+    subject.url = 'https://www.verrot.fr'
+    subject.should be_valid
+    subject.should have(0).errors
+  end
+
   describe "for invalid urls" do
     before :each do
       subject.url = 'http://^^^^.fr'
