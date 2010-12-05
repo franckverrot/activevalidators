@@ -1,28 +1,32 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 
 describe "Url Validation" do
+  before(:each) do
+    TestRecord.reset_callbacks(:validate)
+    TestRecord.validates :url, :url => true
+  end
+  
+  subject { TestRecord.new }
+
   it "accepts valid urls" do
-    model = Models::UrlValidatorModel.new
-    model.url = 'http://www.verrot.fr'
-    model.valid?.should be(true)
-    model.should have(0).errors
+    subject.url = 'http://www.verrot.fr'
+    subject.should be_valid
+    subject.should have(0).errors
   end
 
-  describe "for invalid emails" do
-    let(:model) do
-      Models::UrlValidatorModel.new.tap do |m|
-        m.url = 'http://^^^^.fr'
-      end
+  describe "for invalid urls" do
+    before :each do
+      subject.url = 'http://^^^^.fr'
     end
 
-    it "rejects invalid emails" do
-      model.valid?.should be(false)
-      model.should have(1).errors
+    it "rejects invalid urls" do
+      subject.should_not be_valid
+      subject.should have(1).error
     end
 
     it "generates an error message of type invalid" do
-      model.valid?.should be(false)
-      model.errors[:url].should == [model.errors.generate_message(:url, :invalid)]
+      subject.should_not be_valid
+      subject.errors[:url].should include subject.errors.generate_message(:url, :invalid)
     end
   end
 end
