@@ -20,6 +20,7 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :email_address, :email => true
       validates :link_url,      :url   => true
       validates :user_phone,    :phone => true
+      validates :password,      :password => { :strength => :medium }
     end
 
     class Article
@@ -51,6 +52,7 @@ Exhaustive list of supported validators and their implementation:
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
 * `credit_card` : based on the `Luhn` algorithm
 * `date`  : based on the `DateValidator` gem
+* `password` : based on a set of regular expressions
 
 Todo
 ----
@@ -71,6 +73,13 @@ Note on Patches/Pull Requests
 * Commit, do not mess with rakefile, version, or history.
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
+
+
+Contributors
+------------
+* Franck Verrot
+* Oriol Gual
+* Paco Guzmán
 
 Copyright
 ---------
