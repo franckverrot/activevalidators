@@ -49,7 +49,7 @@ Exhaustive list of supported validators and their implementation:
 * `phone` : based on a regular expression
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
-* `credit_card` : based on the `Luhnacy` gem
+* `credit_card` : based on the `Luhn` algorithm
 * `date`  : based on the `DateValidator` gem
 
 Todo
