@@ -5,7 +5,7 @@ describe "Slug Validation" do
     TestRecord.reset_callbacks(:validate)
     TestRecord.validates :slug, :slug => true
   end
-  
+
   subject { TestRecord.new }
 
   it "accepts valid slugs" do
@@ -29,4 +29,16 @@ describe "Slug Validation" do
       subject.errors[:slug].should include subject.errors.generate_message(:slug, :invalid)
     end
   end
+
+  describe "for empty slugs" do
+    before :each do
+      subject.slug = nil
+    end
+
+    it "generates an error message of type blank" do
+      subject.should_not be_valid
+      subject.errors[:slug].should include subject.errors.generate_message(:slug, :blank)
+    end
+  end
+
 end

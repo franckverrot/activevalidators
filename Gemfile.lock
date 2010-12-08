@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    activevalidators (1.2.1)
+    activevalidators (1.2.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       date_validator (= 0.5.9)
