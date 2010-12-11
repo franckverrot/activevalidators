@@ -21,6 +21,9 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :link_url,      :url   => true
       validates :user_phone,    :phone => true
       validates :password,      :password => { :strength => :medium }
+      validates :twitter_at,    :twitter => { :username_with_at => true }
+      validates :twitter_url,   :twitter => { :url => true }
+      validates :twitter,       :twitter => true
     end
 
     class Article
@@ -48,6 +51,7 @@ Exhaustive list of supported validators and their implementation:
 * `email` : based on the `mail` gem
 * `url`   : based on a regular expression
 * `phone` : based on a regular expression
+* `twitter` : based on a regular expression
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
 * `credit_card` : based on the `Luhn` algorithm
