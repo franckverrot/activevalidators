@@ -4,9 +4,9 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = "activevalidators"
-  s.version     = '1.2.2'
+  s.version     = '1.2.3'
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual"]
+  s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual", "Garrett Bjerkhoel"]
   s.email       = ["franck@verrot.fr"]
   s.homepage    = "http://github.com/cesario/activevalidators"
   s.summary     = %q{Collection of ActiveModel/ActiveRecord validations}
