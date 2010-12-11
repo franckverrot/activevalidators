@@ -21,7 +21,7 @@ describe "Twitter Validation" do
   describe "for twitter url validator" do
     before do
       TestRecord.reset_callbacks(:validate)
-      TestRecord.validates :twitter_username, :twitter => { :url => true }
+      TestRecord.validates :twitter_username, :twitter => { :format => :url }
     end
 
     it "validates with http" do
@@ -79,7 +79,7 @@ describe "Twitter Validation" do
   describe "for twitter at sign validator" do
     before do
       TestRecord.reset_callbacks(:validate)
-      TestRecord.validates :twitter_username, :twitter => { :username_with_at => true }
+      TestRecord.validates :twitter_username, :twitter => { :format => :username_with_at }
     end
 
     it "validate with valid username" do

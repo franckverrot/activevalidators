@@ -21,8 +21,8 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :link_url,      :url   => true
       validates :user_phone,    :phone => true
       validates :password,      :password => { :strength => :medium }
-      validates :twitter_at,    :twitter => { :username_with_at => true }
-      validates :twitter_url,   :twitter => { :url => true }
+      validates :twitter_at,    :twitter => { :format => :username_with_at }
+      validates :twitter_url,   :twitter => { :format => :url }
       validates :twitter,       :twitter => true
     end
 
