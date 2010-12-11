@@ -10,10 +10,6 @@ In your Gemfile ( >>= 1.1.0 ):
 
     gem 'activevalidators'
 
-**N.B: if you use version <= 1.0.2, use this instead:**
-
-    gem 'activevalidators', :require => 'active_validators'
-
 In your models, the gem provides new validators like `email`, or `url`:
 
     class User
