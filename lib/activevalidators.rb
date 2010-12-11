@@ -16,5 +16,6 @@ module ActiveModel
     autoload :CreditCardValidator
     autoload :DateValidator, 'date_validator'
     autoload :PasswordValidator
+    autoload :TwitterValidator
   end
 end

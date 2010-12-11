@@ -80,6 +80,7 @@ Contributors
 * Franck Verrot
 * Oriol Gual
 * Paco Guzmán
+* Garrett Bjerkhoel
 
 Copyright
 ---------
