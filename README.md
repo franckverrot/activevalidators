@@ -38,7 +38,7 @@ In your models, the gem provides new validators like `email`, or `url`:
 
     class Account
       validates :visa_card,     :credit_card => { :type => :visa }
-      validates :credit_card,   :credit_card => { :type => :all  }
+      validates :credit_card,   :credit_card => { :type => :any  }
     end
 
 
