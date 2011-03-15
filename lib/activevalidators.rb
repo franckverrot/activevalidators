@@ -17,5 +17,6 @@ module ActiveModel
     autoload :DateValidator, 'date_validator'
     autoload :PasswordValidator
     autoload :TwitterValidator
+    autoload :TupleUniquenessValidator
   end
 end
