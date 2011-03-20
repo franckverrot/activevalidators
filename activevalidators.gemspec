@@ -4,9 +4,9 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = "activevalidators"
-  s.version     = '1.2.4'
+  s.version     = '1.3.0'
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual", "Garrett Bjerkhoel"]
+  s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual", "Garrett Bjerkhoel", "Renato Riccieri Santos Zannon"]
   s.email       = ["franck@verrot.fr"]
   s.homepage    = "http://github.com/cesario/activevalidators"
   s.summary     = %q{Collection of ActiveModel/ActiveRecord validations}
@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-core"
   s.add_development_dependency "rspec-expectations"
-  s.add_dependency 'activerecord', '>= 3.0.0'
-  s.add_dependency 'activemodel', '>= 3.0.0'
-  s.add_dependency 'mail'
-  s.add_dependency 'date_validator', '0.5.9'
+  s.add_dependency 'activerecord'  , '~> 3.0.0'
+  s.add_dependency 'activemodel'   , '~> 3.0.0'
+  s.add_dependency 'mail'          , '~> 2.2.15'
+  s.add_dependency 'date_validator', '~> 0.6.1'
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")
