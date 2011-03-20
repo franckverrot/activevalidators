@@ -46,7 +46,7 @@ Exhaustive list of supported validators and their implementation:
 
 * `email` : based on the `mail` gem
 * `url`   : based on a regular expression
-* `phone` : based on a regular expression
+* `phone` : based on a set of predefined masks
 * `twitter` : based on a regular expression
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
