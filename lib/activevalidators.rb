@@ -3,14 +3,28 @@ require 'active_model'
 require 'active_record'
 require 'active_support/all'
 require 'active_model/validations'
-#Eager autoload the library's validators into AR::Validations
+
 module ActiveModel
   module Validations
     extend ActiveSupport::Autoload
 
-    validators = ['Email','Url','RespondTo','Phone','Slug','Ip','CreditCard','Date','Password','Twitter']
-    validators.each do |validator_name|
-      autoload (validator_name+'Validator').to_sym
+    def self.activevalidators
+      ['Email','Url','RespondTo','Phone','Slug','Ip','CreditCard','Date','Password','Twitter']
+    end
+
+    #Eager autoload the library's validators into AR::Validations
+    activevalidators.each do |validator_name|
+      autoload validator_name+'Validator'
+    end
+
+    #Defines methods like validates_credit_card
+    module HelperMethods
+      ActiveModel::Validations.activevalidators.map(&:underscore).each do |validator|
+        define_method('validates_'+validator) do |*fields|
+          options ||= (fields.delete fields.find { |f| f.kind_of? Hash}) || true
+          validates *fields, validator => options
+        end
+      end
     end
   end
 end
