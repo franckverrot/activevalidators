@@ -7,15 +7,10 @@ require 'active_model/validations'
 module ActiveModel
   module Validations
     extend ActiveSupport::Autoload
-    autoload :EmailValidator
-    autoload :UrlValidator
-    autoload :RespondToValidator
-    autoload :PhoneValidator
-    autoload :SlugValidator
-    autoload :IpValidator
-    autoload :CreditCardValidator
-    autoload :DateValidator, 'date_validator'
-    autoload :PasswordValidator
-    autoload :TwitterValidator
+
+    validators = ['Email','Url','RespondTo','Phone','Slug','Ip','CreditCard','Date','Password','Twitter']
+    validators.each do |validator_name|
+      autoload (validator_name+'Validator').to_sym
+    end
   end
 end
