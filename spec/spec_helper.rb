@@ -10,5 +10,6 @@ end
 class TestRecord
   include ActiveModel::Validations
   attr_accessor :ip, :url, :slug, :responder, :global_condition,
-    :local_condition, :phone, :email, :card, :password, :twitter_username
+    :local_condition, :phone, :email, :card, :password, :twitter_username,
+    :postal_code
 end
