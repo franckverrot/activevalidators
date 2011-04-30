@@ -83,6 +83,8 @@ Contributors
 * Oriol Gual
 * Paco Guzmán
 * Garrett Bjerkhoel
+* Renato Riccieri Santos Zannon
+* Brian Moseley
 
 Copyright
 ---------
