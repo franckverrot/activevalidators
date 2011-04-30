@@ -20,6 +20,7 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :twitter_at,    :twitter => { :format => :username_with_at }
       validates :twitter_url,   :twitter => { :format => :url }
       validates :twitter,       :twitter => true
+      validates :postal_code,   :postal_code => { :format => :us }
     end
 
     class Article
@@ -53,6 +54,7 @@ Exhaustive list of supported validators and their implementation:
 * `credit_card` : based on the `Luhn` algorithm
 * `date`  : based on the `DateValidator` gem
 * `password` : based on a set of regular expressions
+* `postal_code`: based on a set of predefined masks
 
 Todo
 ----
