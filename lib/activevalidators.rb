@@ -22,7 +22,8 @@ module ActiveModel
       ActiveModel::Validations.activevalidators.map(&:underscore).each do |validator|
         define_method('validates_'+validator) do |*fields|
           options ||= (fields.delete fields.find { |f| f.kind_of? Hash}) || true
-          validates *fields, validator => options
+          args = fields.push({ validator => options })
+          validates(*args)
         end
       end
     end
