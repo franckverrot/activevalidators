@@ -61,7 +61,6 @@ Todo
 
 Lots of improvements can be made:
 
-* Add I18n specific types of error messages for each validator
 * Implement new validators
 * ...
 
@@ -89,4 +88,4 @@ Contributors
 Copyright
 ---------
 
-Copyright (c) 2010 Franck Verrot. MIT LICENSE. See LICENSE for details.
+Copyright (c) 2010-2011 Franck Verrot. MIT LICENSE. See LICENSE for details.
