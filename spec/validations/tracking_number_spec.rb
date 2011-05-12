@@ -21,26 +21,26 @@ describe "Tracking Number Validation" do
       TestRecord.validates :tracking_number, :tracking_number => {:carrier => :ups}
     end
 
-    it 'should validate format of tracking number with 1Z################' do
-      subject.tracking_number = '1Z9999999999999999'
+    it 'should validate format of tracking number with 1Z................' do
+      subject.tracking_number = '1Z12345E0205271688'
       subject.should be_valid
       subject.should have(0).errors
     end
 
-    it 'should validate format of tracking number with ############' do
-      subject.tracking_number = '999999999999'
+    it 'should validate format of tracking number with ............' do
+      subject.tracking_number = '9999V999J999'
       subject.should be_valid
       subject.should have(0).errors
     end
 
-    it 'should validate format of tracking number with T##########' do
-      subject.tracking_number = 'T9999999999'
+    it 'should validate format of tracking number with T..........' do
+      subject.tracking_number = 'T99F99E9999'
       subject.should be_valid
       subject.should have(0).errors
     end
 
-    it 'should validate format of tracking number with #########' do
-      subject.tracking_number = '999999999'
+    it 'should validate format of tracking number with .........' do
+      subject.tracking_number = '990728071'
       subject.should be_valid
       subject.should have(0).errors
     end
@@ -50,7 +50,7 @@ describe "Tracking Number Validation" do
     before :each do
       TestRecord.reset_callbacks(:validate)
       TestRecord.validates :tracking_number, :tracking_number => {:carrier => :ups}
-      subject.tracking_number = '999'
+      subject.tracking_number = '1Z12345E020_271688'
     end
 
     it "rejects invalid formats" do

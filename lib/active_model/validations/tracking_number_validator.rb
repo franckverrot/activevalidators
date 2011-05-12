@@ -13,7 +13,7 @@ module ActiveModel
       def self.known_formats
         @@known_formats ||= {
           # see https://www.ups.com/content/us/en/tracking/help/tracking/tnh.html
-          :ups => ['1Z################', '############', 'T##########', '#########'],
+          :ups => ['1Z................', '............', 'T..........', '.........'],
         }
       end
 
@@ -25,7 +25,7 @@ module ActiveModel
       private
 
       def self.regexp_from(format)
-        Regexp.new "^"+(Regexp.escape format).gsub('\#','\d')+"$"
+        Regexp.new "^"+(Regexp.escape format).gsub('\#','\d').gsub('\.','[a-zA-Z0-9]')+"$"
       end
     end
   end
