@@ -13,7 +13,7 @@ module ActiveModel
       def self.known_formats
         @@known_formats ||= {
           # see https://www.ups.com/content/us/en/tracking/help/tracking/tnh.html
-          :ups => ['1Z9999999999999999', '999999999999', 'T9999999999', '999999999'],
+          :ups => ['1Z################', '############', 'T##########', '#########'],
         }
       end
 
