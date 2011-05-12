@@ -2,3 +2,4 @@
 *.gem
 *.rbc
 Gemfile.lock
+.bundle
