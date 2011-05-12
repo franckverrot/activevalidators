@@ -42,6 +42,10 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :credit_card,   :credit_card => { :type => :any  }
     end
 
+    class Order
+      validates :tracking_num,  :tracking_number => { :carrier => :ups }
+    end
+
 
 Exhaustive list of supported validators and their implementation:
 
@@ -55,6 +59,7 @@ Exhaustive list of supported validators and their implementation:
 * `date`  : based on the `DateValidator` gem
 * `password` : based on a set of regular expressions
 * `postal_code`: based on a set of predefined masks
+* `tracking_number`: based on a set of predefined masks
 
 Todo
 ----

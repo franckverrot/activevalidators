@@ -9,7 +9,8 @@ module ActiveModel
     extend ActiveSupport::Autoload
 
     def self.activevalidators
-      ['Email','Url','RespondTo','Phone','Slug','Ip','CreditCard','Date','Password','Twitter','PostalCode']
+      ['Email','Url','RespondTo','Phone','Slug','Ip','CreditCard','Date','Password','Twitter','PostalCode',
+        'TrackingNumber']
     end
 
     #Eager autoload the library's validators into AR::Validations
