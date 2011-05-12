@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = "activevalidators"
-  s.version     = '1.4.0'
+  s.version     = '1.4.3.bcm'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual", "Garrett Bjerkhoel", "Renato Riccieri Santos Zannon", "Brian Moseley"]
   s.email       = ["franck@verrot.fr"]
@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-core"
   s.add_development_dependency "rspec-expectations"
+  s.add_development_dependency "stickler"
   s.add_dependency 'activerecord'  , '~> 3.0.0'
   s.add_dependency 'activemodel'   , '~> 3.0.0'
   s.add_dependency 'mail'          , '~> 2.2.15'
