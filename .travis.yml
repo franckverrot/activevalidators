@@ -1,0 +1,8 @@
+# Offical support for MRIs + REE
+rvm:
+  - 1.8.7
+  - 1.9.2
+  - ruby-head
+  - ree
+  #- rbx # Uncomment when tests will pass locally
+  #- rbx-2.0 # Uncomment when tests will pass locally
