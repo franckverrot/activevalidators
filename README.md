@@ -67,6 +67,7 @@ Todo
 Lots of improvements can be made:
 
 * Implement new validators
+* Switch to Minitest
 * ...
 
 Note on Patches/Pull Requests
