@@ -9,17 +9,29 @@ module ActiveModel
         record.errors.add(attribute) unless self.send(method, value)
       end
 
+      # UPS:
+      # ups tracking codes are validated solely on their format
+      # see https://www.ups.com/content/us/en/tracking/help/tracking/tnh.html
       UPS_REGEXES = [ /^1Z[a-zA-Z0-9]{16}$/, /^[a-zA-Z0-9]{12}$/, /^[a-zA-Z0-9]{9}$/, /^T[a-zA-Z0-9]{10}$/ ]
       def valid_ups?(value)
         !!UPS_REGEXES.detect { |fmt| value.match(fmt) }
       end
 
+      # USPS:
+      # usps tracking codes are validated based on format (one of USS228 or USS39)
+      # and a check digit (using either of the USPS's MOD10 or MOD11 algorithms)
+      # see USPS Publications:
+      #  -  #91 (05/2008) pp. 38
+      #  -  #97 (05/2002) pp. 62-63
+      #  - #109 (09/2007) pp. 19-21
       def valid_usps?(value)
         uss228?(value) || uss39?(value)
       end
 
+      USS128_REGEX = /^(\d{19})(\d)$/
       def uss228?(value)
-        value[-1].to_i == usps_mod10(value[0..2].reverse)
+        m = value.match(USS128_REGEX)
+        m.present? && (m[2].to_i == usps_mod10(m[1]))
       end
 
       USS39_REGEX = /^[a-zA-Z0-9]{2}(\d{8})(\d)US$/
@@ -32,7 +44,7 @@ module ActiveModel
 
       MOD10_WEIGHTS = [3,1]
       def usps_mod10(chars)
-        10 - weighted_sum(chars, MOD10_WEIGHTS) % 10
+        10 - weighted_sum(chars.reverse, MOD10_WEIGHTS) % 10
       end
 
       MOD11_WEIGHTS = [8,6,4,2,3,5,9,7]
