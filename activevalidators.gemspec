@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-core"
   s.add_development_dependency "rspec-expectations"
-  s.add_dependency 'rake'          , '~> 0.9.2'
-  s.add_dependency 'activerecord'  , '~> 3.0.0'
-  s.add_dependency 'activemodel'   , '~> 3.0.0'
-  s.add_dependency 'mail'          , '~> 2.2.15'
-  s.add_dependency 'date_validator', '~> 0.6.1'
+  s.add_dependency 'rake'          , '>= 0.8.7'
+  s.add_dependency 'activerecord'  , '~> 3.0'
+  s.add_dependency 'activemodel'   , '~> 3.0'
+  s.add_dependency 'mail'          , '~> 2.2'
+  s.add_dependency 'date_validator', '~> 0.6'
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")
