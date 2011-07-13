@@ -13,9 +13,8 @@ Gem::Specification.new do |s|
   s.description = %q{ActiveValidators is a collection of ActiveModel/ActiveRecord validations}
 
   s.add_development_dependency "bundler"
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "rspec-core"
-  s.add_development_dependency "rspec-expectations"
+  s.add_development_dependency "minitest"
+  s.add_development_dependency "turn"
   s.add_dependency 'rake'          , '>= 0.8.7'
   s.add_dependency 'activerecord'  , '~> 3.0'
   s.add_dependency 'activemodel'   , '~> 3.0'

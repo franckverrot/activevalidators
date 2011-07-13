@@ -1,12 +1,12 @@
-require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
+require File.join(File.dirname(__FILE__), '..', 'test_helper.rb')
 
 describe "Credit Card Validation" do
-  before(:each) do
+  before do
     TestRecord.reset_callbacks(:validate)
     TestRecord.validates :card,  :credit_card => { :type => :any }
+    @subject = TestRecord.new
   end
-  
-  subject { TestRecord.new }
+
 
   # Here are some valid credit cards
   VALID_CARDS =  
@@ -37,26 +37,26 @@ describe "Credit Card Validation" do
 
   VALID_CARDS.each_pair do |card, number|
     it "accepts #{card} valid cards" do
-      subject.card = number
-      subject.should be_valid
-      subject.should have(0).errors
+      @subject.card = number
+      @subject.valid?.must_equal true
+      @subject.errors.size.must_equal 0
     end
   end
 
   describe "for invalid cards" do
 
     before :each do
-      subject.card = '99999'
+      @subject.card = '99999'
     end
 
     it "rejects invalid cards" do
-      subject.should_not be_valid
-      subject.should have(1).error
+      @subject.valid?.must_equal false
+      @subject.errors.size.must_equal 1
     end
 
     it "generates an error message of type invalid" do
-      subject.should_not be_valid
-      subject.errors[:card].should include subject.errors.generate_message(:card, :invalid)
+      @subject.valid?.must_equal false
+      @subject.errors[:card].include?(@subject.errors.generate_message(:card, :invalid)).must_equal true
     end
   end
 end

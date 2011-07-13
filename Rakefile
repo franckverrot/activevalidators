@@ -1,8 +1,21 @@
-# -*- encoding: utf-8 -*-
-$:.unshift File.expand_path("../lib", __FILE__)
-
 require 'rubygems'
 require 'rubygems/specification'
+
+require 'bundler'
+Bundler::GemHelper.install_tasks
+
+require 'rake/testtask'
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.pattern = "test/**/*_test.rb"
+  t.verbose = true
+  t.warning = true
+end
+
+require 'turn'
+
+# -*- encoding: utf-8 -*-
+$:.unshift File.expand_path("../lib", __FILE__)
 require 'activevalidators'
 
 def gemspec
@@ -12,30 +25,14 @@ def gemspec
                end
 end
 
-begin
-  require 'rspec/core/rake_task'
-
-  desc "Run specs"
-  RSpec::Core::RakeTask.new do |t|
-    t.rspec_opts = %w(-fs --color)
-    t.ruby_opts  = %w(-w)
-  end
-
-  namespace :spec do
-    task :clean do
-      rm_rf 'tmp'
-      rm_rf 'pkg'
-    end
-
-    desc "Run the full spec suite"
-    task :full => ["clean", "spec"]
-  end
-
-rescue LoadError
-  task :spec do
-    abort "Run `gem install rspec` to be able to run specs"
-  end
+desc "Clean the current directory"
+task :clean do
+  rm_rf 'tmp'
+  rm_rf 'pkg'
 end
+
+desc "Run the full spec suite"
+task :full => ["clean", "test"]
 
 desc "install the gem locally"
 task :install => :package do
@@ -59,4 +56,4 @@ task :install => :gem do
   sh "gem install pkg/#{gemspec.full_name}.gem"
 end
 
-task :default => :spec
+task :default => :full
