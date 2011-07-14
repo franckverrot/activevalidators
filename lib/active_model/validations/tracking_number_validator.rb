@@ -2,7 +2,7 @@ module ActiveModel
   module Validations
     class TrackingNumberValidator < EachValidator
       def validate_each(record, attribute, value)
-        carrier = options[:carrier]
+        carrier = options[:carrier] || (options[:carrier_field] && record.send(options[:carrier_field]))
         raise "Carrier option required" unless carrier
         method = "valid_#{carrier.to_s}?"
         raise "Tracking number validation not supported for carrier #{carrier}" unless self.respond_to?(method)

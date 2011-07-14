@@ -26,7 +26,7 @@ describe "Tracking Number Validation" do
 
   subject { TestRecord.new }
 
-  context "when no carrier parameter is given" do
+  context "when no carrier or carrier_field parameter is given" do
     before(:each) do
       TestRecord.reset_callbacks(:validate)
       TestRecord.validates :tracking_number, :tracking_number => true
@@ -124,6 +124,55 @@ describe "Tracking Number Validation" do
 
       context 'USS128 tracking number with invalid chars' do
         it_should_behave_like "invalid tracking number", 'U11234567891234567879'
+      end
+    end
+  end
+
+  context "when given a record-based carrier parameter" do
+    subject { TestRecord.new }
+
+    context "when record gives 'ups' as carrier" do
+      before do
+        TestRecord.reset_callbacks(:validate)
+        TestRecord.validates :tracking_number, :tracking_number => {:carrier_field => :carrier}
+        subject.carrier = 'ups'
+      end
+
+      context 'with valid ups tracking number' do
+        it_should_behave_like 'valid tracking number', '1Z12345E0205271688'
+      end
+
+      context 'with invalid ups tracking number' do
+        it_should_behave_like 'invalid tracking number', '1Z12__5E0205271688'
+      end
+    end
+
+    context "when record gives 'usps' as carrier" do
+      before do
+        TestRecord.reset_callbacks(:validate)
+        TestRecord.validates :tracking_number, :tracking_number => {:carrier_field => :carrier}
+        subject.carrier = 'usps'
+      end
+
+      context 'with valid usps tracking number' do
+        it_should_behave_like 'valid tracking number', 'EA123456784US'
+      end
+
+      context 'with invalid usps tracking number' do
+        it_should_behave_like 'invalid tracking number', 'EA123456784UZ'
+      end
+    end
+
+    context "when record gives an unsupported carrier" do
+      before do
+        TestRecord.reset_callbacks(:validate)
+        TestRecord.validates :tracking_number, :tracking_number => {:carrier_field => :carrier}
+        subject.carrier = 'fedex'
+        subject.tracking_number = 'EA123456784US'
+      end
+
+      it "raises an error when validating" do
+        expect { subject.valid? }.to raise_error
       end
     end
   end
