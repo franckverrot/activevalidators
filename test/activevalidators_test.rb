@@ -1,19 +1,24 @@
 require 'test_helper'
 
 describe "A class with active validators included" do
-  before do
-    @subject = TestRecord.new
-  end
 
   validators = ['Email','Url','RespondTo','Phone','Slug','Ip','CreditCard','Date','Password','Twitter'].map(&:underscore)
 
   validators.each do |validator|
     describe ".validates_#{validator}" do
+      before do
+        @subject = TestRecord.new
+      end
+
       it "is defined" do
         assert_respond_to @subject, "validates_#{validator}"
       end
 
       describe "when it doesn't receive a hash with options" do
+        before do
+          @subject = TestRecord.new
+        end
+
         it "calls validates #{validator} => true" do
           #FIXME: should_receive was a lie right?
           return
@@ -30,6 +35,10 @@ describe "A class with active validators included" do
       end
 
       describe "when it receives a hash with options" do
+        before do
+          @subject = TestRecord.new
+        end
+
         it "calls validates #{validator} => options" do
           #FIXME: should_receive was a lie right?
           return
