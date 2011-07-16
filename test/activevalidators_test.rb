@@ -11,8 +11,8 @@ describe "A class with active validators included" do
       end
 
       it "is defined" do
-          #FIXME: Not sure what is was supposed to test, the validators were never included...
-          return
+        #FIXME: Not sure what is was supposed to test, the validators were never included...
+        skip("FIXME")
         assert_respond_to @subject, "validates_#{validator}"
       end
 
@@ -23,14 +23,14 @@ describe "A class with active validators included" do
 
         it "calls validates #{validator} => true" do
           #FIXME: should_receive was a lie right?
-          return
+          skip("FIXME")
           @subject.should_receive('validates').with hash_including(validator => true)
           @subject.send("validates_#{validator}")
         end
 
         it "calls 'validates *attributes, #{validator} => true' when fed with attributes" do
           #FIXME: should_receive was a lie right?
-          return
+          skip("FIXME")
           @subject.should_receive('validates').with(:attr1, :attr2, validator => true)
           @subject.send("validates_#{validator}", :attr1, :attr2)
         end
@@ -43,14 +43,14 @@ describe "A class with active validators included" do
 
         it "calls validates #{validator} => options" do
           #FIXME: should_receive was a lie right?
-          return
+          skip("FIXME")
           @subject.should_receive('validates').with hash_including(validator => {:options => :blah})
           @subject.send("validates_#{validator}", :options => :blah)
         end
 
         it "calls 'validates *attributes, #{validator} => options' when fed with attributes" do
           #FIXME: should_receive was a lie right?
-          return
+          skip("FIXME")
           @subject.should_receive('validates').with(:attr1, :attr2, validator => {:options => :blah})
           @subject.send("validates_#{validator}", :attr1, :attr2, :options => :blah)
         end
