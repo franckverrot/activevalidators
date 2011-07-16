@@ -88,8 +88,12 @@ describe "Tracking Number Validation" do
         it_should_behave_like "valid tracking number", 'RB123456785US'
       end
 
-      context 'USS128 tracking number with valid MOD10 check digit' do
+      context '20 character USS128 tracking number with valid MOD10 check digit' do
         it_should_behave_like "valid tracking number", '71123456789123456787'
+      end
+
+      context '22 character USS128 tracking number with valid MOD10 check digit' do
+        it_should_behave_like "valid tracking number", '9171969010756003077385'
       end
     end
 
@@ -119,7 +123,7 @@ describe "Tracking Number Validation" do
       end
 
       context 'USS128 tracking number that is too long' do
-        it_should_behave_like "invalid tracking number", '711234567891234567879'
+        it_should_behave_like "invalid tracking number", '711234567891234567879287'
       end
 
       context 'USS128 tracking number with invalid chars' do

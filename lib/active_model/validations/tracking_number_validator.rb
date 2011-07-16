@@ -28,7 +28,7 @@ module ActiveModel
         uss228?(value) || uss39?(value)
       end
 
-      USS128_REGEX = /^(\d{19})(\d)$/
+      USS128_REGEX = /^(\d{19,21})(\d)$/
       def uss228?(value)
         m = value.match(USS128_REGEX)
         m.present? && (m[2].to_i == usps_mod10(m[1]))
