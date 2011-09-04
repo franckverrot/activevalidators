@@ -4,7 +4,6 @@ describe "Credit Card Validation" do
   before do
     TestRecord.reset_callbacks(:validate)
     TestRecord.validates :card,  :credit_card => { :type => :any }
-    @subject = TestRecord.new
   end
 
 
@@ -37,26 +36,19 @@ describe "Credit Card Validation" do
 
   VALID_CARDS.each_pair do |card, number|
     it "accepts #{card} valid cards" do
-      @subject.card = number
-      @subject.valid?.must_equal true
-      @subject.errors.size.must_equal 0
+      subject = TestRecord.new :card => number
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
     end
   end
 
   describe "for invalid cards" do
+    it "rejects invalid cards and generates an error message of type invalid" do
+      subject = TestRecord.new :card => '99999'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
 
-    before :each do
-      @subject.card = '99999'
-    end
-
-    it "rejects invalid cards" do
-      @subject.valid?.must_equal false
-      @subject.errors.size.must_equal 1
-    end
-
-    it "generates an error message of type invalid" do
-      @subject.valid?.must_equal false
-      @subject.errors[:card].include?(@subject.errors.generate_message(:card, :invalid)).must_equal true
+      subject.errors[:card].include?(subject.errors.generate_message(:card, :invalid)).must_equal true
     end
   end
 end
