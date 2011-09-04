@@ -1,10 +1,15 @@
 require 'rubygems'
 
-begin; require 'turn'; rescue LoadError; end
+# silence warnings
+old_w, $-w = $-w, false
 
+begin; require 'turn'; rescue LoadError; end
 require 'minitest/spec'
 require 'minitest/mock'
 require 'minitest/autorun'
+
+# unsilence warnings
+$-w = old_w
 
 require 'activevalidators'
 
