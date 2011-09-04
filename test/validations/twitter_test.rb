@@ -1,5 +1,5 @@
 # coding: utf-8
-require File.join(File.dirname(__FILE__), '..', 'test_helper.rb')
+require 'test_helper.rb'
 
 describe "Twitter Validation" do
   before(:each) do

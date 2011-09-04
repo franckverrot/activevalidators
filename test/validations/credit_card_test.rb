@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '..', 'test_helper.rb')
+require 'test_helper.rb'
 
 describe "Credit Card Validation" do
   before do
