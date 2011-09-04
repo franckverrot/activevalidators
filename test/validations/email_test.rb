@@ -1,11 +1,6 @@
 require 'test_helper.rb'
 
 describe "Email Validation" do
-  before do
-    TestRecord.reset_callbacks(:validate)
-    TestRecord.validates :email, :email => true
-  end
-
   it "accepts valid emails" do
     subject = build_email_record :email => 'franck@verrot.fr'
     subject.valid?.must_equal true
@@ -40,6 +35,8 @@ describe "Email Validation" do
   end
 
   def build_email_record(attrs = {})
+    TestRecord.reset_callbacks(:validate)
+    TestRecord.validates :email, :email => true
     TestRecord.new attrs
   end
 end
