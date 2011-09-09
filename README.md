@@ -56,6 +56,7 @@ Exhaustive list of supported validators and their implementation:
 * `password` : based on a set of regular expressions
 * `phone` : based on a set of predefined masks
 * `postal_code`: based on a set of predefined masks
+* `respond_to`
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
