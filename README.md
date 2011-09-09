@@ -49,17 +49,17 @@ In your models, the gem provides new validators like `email`, or `url`:
 
 Exhaustive list of supported validators and their implementation:
 
-* `email` : based on the `mail` gem
-* `url`   : based on a regular expression
-* `phone` : based on a set of predefined masks
-* `twitter` : based on a regular expression
-* `slug`  : based on `ActiveSupport::String#parameterize`
-* `ip`    : based on `Resolv::IPv[4|6]::Regex`
 * `credit_card` : based on the `Luhn` algorithm
 * `date`  : based on the `DateValidator` gem
+* `email` : based on the `mail` gem
+* `ip`    : based on `Resolv::IPv[4|6]::Regex`
 * `password` : based on a set of regular expressions
+* `phone` : based on a set of predefined masks
 * `postal_code`: based on a set of predefined masks
+* `slug`  : based on `ActiveSupport::String#parameterize`
 * `tracking_number`: based on a set of predefined masks
+* `twitter` : based on a regular expression
+* `url`   : based on a regular expression
 
 Todo
 ----
