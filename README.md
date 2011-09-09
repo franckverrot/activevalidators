@@ -89,6 +89,8 @@ Contributors
 * Garrett Bjerkhoel
 * Renato Riccieri Santos Zannon
 * Brian Moseley
+* Travis Vachon
+* Rob Zuber
 
 Copyright
 ---------
