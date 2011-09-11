@@ -29,26 +29,43 @@ describe "Credit Card Validation" do
   }
 
   VALID_CARDS.each_pair do |card, number|
-    it "accepts #{card} valid cards" do
-      subject = build_card_record :card => number
-      subject.valid?.must_equal true
-      subject.errors.size.must_equal 0
+    describe "it accepts #{card} cards" do
+      it "using a specific card type" do
+        subject = build_card_record({:card => number}, {:type => card})
+        assert card_is_valid?(subject)
+      end
+      it "using :credit_card => { :type => :any }" do
+        subject = build_card_record({:card => number}, {:type => :any})
+        assert card_is_valid?(subject)
+      end
+      it "using :credit_card => true" do
+        subject = build_card_record({:card => number}, true)
+        assert card_is_valid?(subject)
+      end
     end
   end
 
   describe "for invalid cards" do
     it "rejects invalid cards and generates an error message of type invalid" do
       subject = build_card_record :card => '99999'
-      subject.valid?.must_equal false
-      subject.errors.size.must_equal 1
-
-      subject.errors[:card].include?(subject.errors.generate_message(:card, :invalid)).must_equal true
+      assert card_is_invalid?(subject)
     end
   end
 
-  def build_card_record(attrs = {})
+  def build_card_record(attrs = {}, validator = {:type => :any})
     TestRecord.reset_callbacks(:validate)
-    TestRecord.validates :card,  :credit_card => { :type => :any }
+    TestRecord.validates :card,  :credit_card => validator
     TestRecord.new attrs
+  end
+
+  def card_is_valid?(subject)
+    subject.valid?.must_equal true
+    subject.errors.size.must_equal 0
+  end
+
+  def card_is_invalid?(subject)
+    subject.valid?.must_equal false
+    subject.errors.size.must_equal 1
+    subject.errors[:card].include?(subject.errors.generate_message(:card, :invalid)).must_equal true
   end
 end

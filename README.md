@@ -12,6 +12,7 @@ In your Gemfile ( >>= 1.1.0 ):
 
 In your models, the gem provides new validators like `email`, or `url`:
 
+```ruby
     class User
       validates :email_address, :email => true
       validates :link_url,      :url   => true
@@ -38,6 +39,7 @@ In your models, the gem provides new validators like `email`, or `url`:
     end
 
     class Account
+      validates :any_card,      :credit_card => true
       validates :visa_card,     :credit_card => { :type => :visa }
       validates :credit_card,   :credit_card => { :type => :any  }
     end
@@ -45,7 +47,7 @@ In your models, the gem provides new validators like `email`, or `url`:
     class Order
       validates :tracking_num,  :tracking_number => { :carrier => :ups }
     end
-
+```
 
 Exhaustive list of supported validators and their implementation:
 

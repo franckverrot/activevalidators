@@ -3,7 +3,8 @@ module ActiveModel
 
     class CreditCardValidator < EachValidator
       def validate_each(record, attribute, value)
-        record.errors.add(attribute) unless Luhn.valid?(options[:type], sanitize_card(value))
+        type = options.fetch(:type, :any)
+        record.errors.add(attribute) unless Luhn.valid?(type, sanitize_card(value))
       end
 
       def sanitize_card(value)
@@ -23,12 +24,25 @@ module ActiveModel
           self.luhn_valid?(number) and !(number !~ /^5[1-5].{14}/)
         end
 
+        class << self
+          alias :master_card? :mastercard?
+        end
+
         def self.visa?(number)
           self.luhn_valid?(number) and !(number !~ /^4.{15}/)
         end
 
         def self.amex?(number)
           self.luhn_valid?(number) and !(number !~ /^3[47].{13}/)
+        end
+
+        [:diners_club, :en_route, :discover, :jcb, :carte_blanche, :switch,
+          :solo, :laser].each do |card_type|
+          class_eval <<-VALIDATOR, __FILE__, __LINE__ + 1
+          def self.#{card_type}?(number)
+            self.luhn_valid?(number)
+          end
+          VALIDATOR
         end
 
         def self.luhn_valid?(s)
@@ -49,7 +63,6 @@ module ActiveModel
               end
           } % 10 == 0
         end
-
       end
     end
 
