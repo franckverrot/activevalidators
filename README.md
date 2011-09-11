@@ -1,4 +1,4 @@
-ActiveValidators [![Travis](https://secure.travis-ci.org/cesario/activevalidators.png)](https://secure.travis-ci.org/cesario/activevalidators)
+ActiveValidators [![Travis](https://secure.travis-ci.org/cesario/activevalidators.png)](http://travis-ci.org/cesario/activevalidators)
 ================
 
 Collection of ActiveModel/ActiveRecord validations
