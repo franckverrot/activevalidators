@@ -4,9 +4,7 @@ module ActiveModel
       def validate_each(record, attribute, value)
         @value = value
         @formats = PhoneValidator.known_formats[options[:country]] || PhoneValidator.known_formats[:us]
-        unless matches_any?
-          record.errors.add(attribute)
-        end
+        record.errors.add(attribute) if value.blank? || !matches_any?
       end
 
       def self.known_formats

@@ -6,7 +6,7 @@ module ActiveModel
         raise "Carrier option required" unless carrier
         method = "valid_#{carrier.to_s}?"
         raise "Tracking number validation not supported for carrier #{carrier}" unless self.respond_to?(method)
-        record.errors.add(attribute) unless self.send(method, value)
+        record.errors.add(attribute) if value.blank? || !self.send(method, value) 
       end
 
       # UPS:

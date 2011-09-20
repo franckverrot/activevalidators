@@ -2,7 +2,7 @@ module ActiveModel
   module Validations
     class IpValidator < EachValidator
       def validate_each(record, attribute, value)
-        record.errors.add(attribute) unless regex.match(value)
+        record.errors.add(attribute) if value.blank? || !regex.match(value)
       end
 
       def check_validity!

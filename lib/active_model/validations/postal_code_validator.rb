@@ -6,7 +6,7 @@ module ActiveModel
         country = options[:country] || :us
         @formats = PostalCodeValidator.known_formats[country]
         raise "No known postal code formats for country #{country}" unless @formats
-        record.errors.add(attribute) unless matches_any?
+        record.errors.add(attribute) if value.blank? || !matches_any?
       end
 
       def self.known_formats
