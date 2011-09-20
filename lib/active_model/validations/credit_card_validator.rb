@@ -4,7 +4,7 @@ module ActiveModel
     class CreditCardValidator < EachValidator
       def validate_each(record, attribute, value)
         type = options.fetch(:type, :any)
-        record.errors.add(attribute) unless Luhn.valid?(type, sanitize_card(value))
+        record.errors.add(attribute) if value.blank? || !Luhn.valid?(type, sanitize_card(value))
       end
 
       def sanitize_card(value)
