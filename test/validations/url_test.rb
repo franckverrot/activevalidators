@@ -7,18 +7,33 @@ describe "Url Validation" do
     TestRecord.new
   end
 
-  it "accepts valid urls" do
-    subject = build_url_record
-    subject.url = 'http://www.verrot.fr'
-    subject.valid?.must_equal true
-    subject.errors.size.must_equal 0
-  end
+  describe "valid urls" do
+    it "accepts urls without port number" do
+      subject = build_url_record
+      subject.url = 'http://www.verrot.fr'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
 
-  it "accepts valid SSL urls" do
-    subject = build_url_record
-    subject.url = 'https://www.verrot.fr'
-    subject.valid?.must_equal true
-    subject.errors.size.must_equal 0
+    it "accepts urls with port number" do
+      subject = build_url_record
+      subject.url = 'http://www.verrot.fr:1234'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+
+    it "accepts urls with basic auth" do
+      subject = build_url_record
+      subject.url = 'http://foo:bar@www.verrot.fr'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+    it "accepts valid SSL urls" do
+      subject = build_url_record
+      subject.url = 'https://www.verrot.fr'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
   end
 
   describe "for invalid urls" do
