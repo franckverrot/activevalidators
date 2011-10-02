@@ -11,6 +11,6 @@ describe "Date Validation" do
     d = TestRecord.new(:start_date => Time.now, :end_date => Time.now - 1)
 
     refute d.valid?
-    refute_includes d.errors.map(&:to_s).join, 'translation missing'
+    refute_includes d.errors.to_s, 'translation missing'
   end
 end
