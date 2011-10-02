@@ -10,6 +10,8 @@ module ActiveModel
       require "active_model/validations/#{validator_name}_validator"
     end
 
+    require 'date_validator'
+
     #Defines methods like validates_credit_card
     module HelperMethods
       ActiveModel::Validations.activevalidators.each do |validator|
