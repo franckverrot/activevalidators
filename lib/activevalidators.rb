@@ -1,4 +1,5 @@
 require 'active_model'
+require 'date_validator'
 
 module ActiveModel
   module Validations
