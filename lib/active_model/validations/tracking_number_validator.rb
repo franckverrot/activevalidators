@@ -44,7 +44,7 @@ module ActiveModel
 
       MOD10_WEIGHTS = [3,1]
       def usps_mod10(chars)
-        10 - weighted_sum(chars.reverse, MOD10_WEIGHTS) % 10
+        (10 - weighted_sum(chars.reverse, MOD10_WEIGHTS) % 10) % 10
       end
 
       MOD11_WEIGHTS = [8,6,4,2,3,5,9,7]
