@@ -68,6 +68,10 @@ describe "Tracking Number Validation" do
         assert_valid_tracking_number({:carrier => :usps}, '71123456789123456787')
       end
 
+      it '20 character USS128 tracking number with valid MOD10 check digit ending in 0' do
+        assert_valid_tracking_number({:carrier => :usps}, '03110240000115809160')
+      end
+
       it '22 character USS128 tracking number with valid MOD10 check digit' do
         assert_valid_tracking_number({:carrier => :usps}, '9171969010756003077385')
       end
