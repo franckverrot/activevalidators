@@ -12,6 +12,7 @@ module ActiveModel
       def self.known_formats
         @@known_formats ||= {
           :us => ['#####', '#####-####'],
+          :pt => ['####', '####-###'],
         }
       end
 
