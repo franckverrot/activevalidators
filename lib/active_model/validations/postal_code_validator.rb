@@ -3,16 +3,22 @@ module ActiveModel
     class PostalCodeValidator < EachValidator
       def validate_each(record, attribute, value)
         @value = value
-        country = options[:country] || :us
-        @formats = PostalCodeValidator.known_formats[country]
+        unless country = options[:country]
+          if country_method = options[:country_method]
+	    country = record.send(country_method)
+          else
+	    country = 'us'
+	  end
+	end
+        @formats = PostalCodeValidator.known_formats[country.to_s]
         raise "No known postal code formats for country #{country}" unless @formats
         record.errors.add(attribute) if value.blank? || !matches_any?
       end
 
       def self.known_formats
         @@known_formats ||= {
-          :us => ['#####', '#####-####'],
-          :pt => ['####', '####-###'],
+          'us' => ['#####', '#####-####'],
+          'pt' => ['####', '####-###'],
         }
       end
 
