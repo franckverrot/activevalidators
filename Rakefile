@@ -12,8 +12,6 @@ Rake::TestTask.new do |t|
   t.warning = true
 end
 
-require 'turn'
-
 # -*- encoding: utf-8 -*-
 $:.unshift File.expand_path("../lib", __FILE__)
 require 'activevalidators'
