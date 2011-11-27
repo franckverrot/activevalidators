@@ -94,6 +94,7 @@ Lots of improvements can be made:
 * Brian Moseley
 * Travis Vachon
 * Rob Zuber
+* Manuel Menezes de Sequeira
 
 ## Copyright
 
