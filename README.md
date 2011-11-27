@@ -1,14 +1,16 @@
-ActiveValidators [![Travis](https://secure.travis-ci.org/cesario/activevalidators.png)](http://travis-ci.org/cesario/activevalidators)
-================
+# ActiveValidators [![Travis](https://secure.travis-ci.org/cesario/activevalidators.png)](http://travis-ci.org/cesario/activevalidators)
 
-Collection of ActiveModel/ActiveRecord validations
+# Description
 
-Installation (Rails 3)
-----------------------
+ActiveValidators is a collection of off-the-shelf and tested ActiveModel/ActiveRecord validations.
 
-In your Gemfile ( >>= 1.1.0 ):
+## Installation
 
-    gem 'activevalidators'
+    gem install activevalidators
+
+This projects follows [Semantic Versioning a.k.a SemVer](http://semver.org). If you use Bundler, you can use the stabby specifier `~>` safely.
+
+## Usage
 
 In your models, the gem provides new validators like `email`, or `url`:
 
@@ -64,16 +66,14 @@ Exhaustive list of supported validators and their implementation:
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
 
-Todo
-----
+## Todo
 
 Lots of improvements can be made:
 
 * Implement new validators
 * ...
 
-Note on Patches/Pull Requests
------------------------------
+## Note on Patches/Pull Requests
 
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -84,8 +84,8 @@ Note on Patches/Pull Requests
 * Send me a pull request. Bonus points for topic branches.
 
 
-Contributors
-------------
+## Contributors
+
 * Franck Verrot
 * Oriol Gual
 * Paco Guzmán
@@ -95,7 +95,6 @@ Contributors
 * Travis Vachon
 * Rob Zuber
 
-Copyright
----------
+## Copyright
 
 Copyright (c) 2010-2011 Franck Verrot. MIT LICENSE. See LICENSE for details.
