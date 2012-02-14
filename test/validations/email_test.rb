@@ -6,7 +6,7 @@ describe "Email Validation" do
     subject.valid?.must_equal true
     subject.errors.size.must_equal 0
   end
-  
+
   it "accepts valid emails" do
     subject = build_email_record :email => 'franck@edu.verrot-gouv.fr'
     subject.valid?.must_equal true
@@ -33,19 +33,19 @@ describe "Email Validation" do
       subject.errors.size.must_equal 1
     end
 
-    it "generates an error message of type invalid" do
+    it 'generates an error message of type invalid' do
       subject = build_email_record :email => 'franck.fr'
       subject.valid?.must_equal false
       subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
     end
-    
-    it "rejects invalid emails" do
+
+    it 'rejects email without tld' do
       subject = build_email_record :email => 'franck@verrotFR'
       subject.valid?.must_equal false
       subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
     end
-    
-    it "rejects invalid emails" do
+
+    it 'rejects email with invalid hostname character' do
       subject = build_email_record :email => 'franck@verrot_gouv.fr'
       subject.valid?.must_equal false
       subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
