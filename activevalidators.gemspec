@@ -1,11 +1,7 @@
 # -*- encoding: utf-8 -*-
-lib = File.expand_path('../lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
-require 'active_validators/version'
-
 Gem::Specification.new do |s|
   s.name        = "activevalidators"
-  s.version     = ActiveValidators::VERSION
+  s.version     = '1.8.1'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual", "Garrett Bjerkhoel", "Renato Riccieri Santos Zannon", "Brian Moseley"]
   s.email       = ["franck@verrot.fr"]
