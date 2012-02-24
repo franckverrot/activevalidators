@@ -38,18 +38,6 @@ describe "Email Validation" do
       subject.valid?.must_equal false
       subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
     end
-
-    it 'rejects email without tld' do
-      subject = build_email_record :email => 'franck@verrotFR'
-      subject.valid?.must_equal false
-      subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
-    end
-
-    it 'rejects email with invalid hostname character' do
-      subject = build_email_record :email => 'franck@verrot_gouv.fr'
-      subject.valid?.must_equal false
-      subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
-    end
   end
 
   def build_email_record(attrs = {})
