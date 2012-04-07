@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>ActiveValidators by cesario</title>
-    
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <script src="javascripts/scale.fix.js"></script>
@@ -16,46 +16,131 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>ActiveValidators</h1>
-        <p>Collection of ActiveModel/ActiveRecord validators</p>
-        <p class="view"><a href="https://github.com/cesario/activevalidators">View the Project on GitHub <small>cesario/activevalidators</small></a></p>
-        <ul>
-          <li><a href="https://github.com/cesario/activevalidators/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/cesario/activevalidators/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/cesario/activevalidators">Fork On <strong>GitHub</strong></a></li>
-        </ul>
+      <h1>ActiveValidators</h1>
+      <p>Collection of ActiveModel/ActiveRecord validators</p>
+      <p class="view"><a href="https://github.com/cesario/activevalidators">View the Project on GitHub <small>cesario/activevalidators</small></a></p>
+      <ul>
+        <li><a href="https://github.com/cesario/activevalidators/zipball/master">Download <strong>ZIP File</strong></a></li>
+        <li><a href="https://github.com/cesario/activevalidators/tarball/master">Download <strong>TAR Ball</strong></a></li>
+        <li><a href="https://github.com/cesario/activevalidators">Fork On <strong>GitHub</strong></a></li>
+      </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+      <h1>ActiveValidators <a href="http://travis-ci.org/cesario/activevalidators"><img src="https://secure.travis-ci.org/cesario/activevalidators.png" alt="Travis" title="" /></a></h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+      <h1>Description</h1>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+      <p>ActiveValidators is a collection of off-the-shelf and tested ActiveModel/ActiveRecord validations.</p>
+
+      <h2>Installation</h2>
+
+<pre><code>gem install activevalidators
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+      <p>This projects follows <a href="http://semver.org">Semantic Versioning a.k.a SemVer</a>. If you use Bundler, you can use the stabby specifier <code>~&gt;</code> safely.</p>
 
-<h3>Designer Templates</h3>
+      <h2>Usage</h2>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+      <p>In your models, the gem provides new validators like <code>email</code>, or <code>url</code>:</p>
 
-<h3>Rather Drive Stick?</h3>
+      <p>```ruby
+      class User
+      validates :email<em>address, :email => true
+        validates :link</em>url,      :url   => true
+      validates :user<em>phone,    :phone => true
+        validates :password,      :password => { :strength => :medium }
+        validates :twitter</em>at,    :twitter => { :format => :username<em>with</em>at }
+      validates :twitter<em>url,   :twitter => { :format => :url }
+        validates :twitter,       :twitter => true
+        validates :postal</em>code,   :postal_code => { :country => :us }
+      end</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<pre><code>class Article
+  validates :slug,          :slug =&gt; true
+  validates :expiration_date,
+                  :date =&gt; {
+                             :after =&gt; lambda { Time.now },
+                             :before =&gt; lambda { Time.now + 1.year }
+                           }
+end
 
-<h3>Authors and Contributors</h3>
+class Device
+  validates :ipv6,          :ip =&gt; { :format =&gt; :v6 }
+  validates :ipv4,          :ip =&gt; { :format =&gt; :v4 }
+end
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+class Account
+  validates :any_card,      :credit_card =&gt; true
+  validates :visa_card,     :credit_card =&gt; { :type =&gt; :visa }
+  validates :credit_card,   :credit_card =&gt; { :type =&gt; :any  }
+end
 
-<h3>Support or Contact</h3>
+class Order
+  validates :tracking_num,  :tracking_number =&gt; { :carrier =&gt; :ups }
+end
+</code></pre>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact support@github.com and we’ll help you sort it out.</p>
+      <p>```</p>
+
+      <p>Exhaustive list of supported validators and their implementation:</p>
+
+      <ul>
+        <li><code>credit_card</code> : based on the <code>Luhn</code> algorithm</li>
+        <li><code>date</code>  : based on the <code>DateValidator</code> gem</li>
+        <li><code>email</code> : based on the <code>mail</code> gem</li>
+        <li><code>ip</code>    : based on <code>Resolv::IPv[4|6]::Regex</code></li>
+        <li><code>password</code> : based on a set of regular expressions</li>
+        <li><code>phone</code> : based on a set of predefined masks</li>
+        <li><code>postal_code</code>: based on a set of predefined masks</li>
+        <li><code>respond_to</code></li>
+        <li><code>slug</code>  : based on <code>ActiveSupport::String#parameterize</code></li>
+        <li><code>tracking_number</code>: based on a set of predefined masks</li>
+        <li><code>twitter</code> : based on a regular expression</li>
+        <li><code>url</code>   : based on a regular expression</li>
+      </ul>
+
+      <h2>Todo</h2>
+
+      <p>Lots of improvements can be made:</p>
+
+      <ul>
+        <li>Implement new validators</li>
+        <li>...</li>
+      </ul>
+
+      <h2>Note on Patches/Pull Requests</h2>
+
+      <ul>
+        <li>Fork the project.</li>
+        <li>Make your feature addition or bug fix.</li>
+        <li>Add tests for it. This is important so I don't break it in a
+        future version unintentionally.</li>
+        <li>Commit, do not mess with rakefile, version, or history.
+        (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)</li>
+        <li>Send me a pull request. Bonus points for topic branches.</li>
+      </ul>
+
+      <h2>Contributors</h2>
+
+      <ul>
+        <li>Franck Verrot</li>
+        <li>Oriol Gual</li>
+        <li>Paco Guzmán</li>
+        <li>Garrett Bjerkhoel</li>
+        <li>Renato Riccieri Santos Zannon</li>
+        <li>Brian Moseley</li>
+        <li>Travis Vachon</li>
+        <li>Rob Zuber</li>
+        <li>Manuel Menezes de Sequeira</li>
+      </ul>
+
+      <h2>Copyright</h2>
+
+      <p>Copyright (c) 2010-2011 Franck Verrot. MIT LICENSE. See LICENSE for details.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/cesario">cesario</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      <p>This project is maintained by <a href="https://github.com/cesario">cesario</a></p>
+      <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
