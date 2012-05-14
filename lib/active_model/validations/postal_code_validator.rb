@@ -84,7 +84,7 @@ module ActiveModel
       private
 
       def self.regexp_from(format)
-        Regexp.new "^"+(Regexp.escape format).gsub('/[@#]/', '@' => '[[:alpha:]]', '#' => '\d')+"$"
+        Regexp.new "^"+(Regexp.escape format).gsub(/[@#]/, '@' => '[[:alpha:]]', '#' => 'd')+"$"
       end
     end
   end
