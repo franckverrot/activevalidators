@@ -28,7 +28,7 @@ describe "Postal Code Validation" do
       formats.each do |format|
         it "should validate format of postal code with #{format}" do
           subject = build_postal_code_record :country => country
-          subject.postal_code = format.gsub('#','9')
+          subject.postal_code = format.gsub(/[@#]/, '@' => 'A', '#' => '9')
           subject.valid?.must_equal true
           subject.errors.size.must_equal 0
         end
