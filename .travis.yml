@@ -1,10 +1,9 @@
-# Offical support for MRIs + REE
+language: ruby
 rvm:
-  - 1.8.7
   - 1.9.2
   - 1.9.3
-  - ruby-head
-  - ree
-  - rbx-18mode
-  - rbx-19mode
   - jruby
+  - jruby-19mode # JRuby in 1.9 mode
+  - rbx-19mode
+  - ruby-head
+  - jruby-head
