@@ -11,52 +11,39 @@ describe "Phone Validation" do
   describe "when no country is given" do
     it 'should validate format of phone with ###-###-####' do
       subject = build_phone_validation true
-      subject.phone = '999-999-9999'
+      subject.phone = '1-999-999-9999'
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
 
     it 'should validate format of phone with ##########' do
       subject = build_phone_validation true
-      subject.phone = '9999999999'
+      subject.phone = '19999999999'
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
 
     it 'should validate format of phone with ###.###.####' do
       subject = build_phone_validation true
-      subject.phone = '999.999.9999'
+      subject.phone = '1999.999.9999'
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
 
     it 'should validate format of phone with ### ### ####' do
       subject = build_phone_validation true
-      subject.phone = '999 999 9999'
+      subject.phone = '1999 999 9999'
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
 
     it 'should validate format of phone with (###) ###-####' do
       subject = build_phone_validation true
-      subject.phone = '(999) 999-9999'
+      subject.phone = '1(999) 999-9999'
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
 
-  end
-
-  ActiveModel::Validations::PhoneValidator.known_formats.each do |country, formats|
-    describe "when given a :#{country} country parameter" do
-      formats.each do |format|
-        it "should validate format of phone with #{format}" do
-          subject = build_phone_validation :country => country
-          subject.phone = format.gsub('#','9')
-          subject.valid?.must_equal true
-          subject.errors.size.must_equal 0
-        end
-      end
-    end
   end
 
 
