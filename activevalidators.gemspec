@@ -9,6 +9,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{Collection of ActiveModel/ActiveRecord validations}
   s.description = %q{ActiveValidators is a collection of ActiveModel/ActiveRecord validations}
 
+  s.required_ruby_version = '>= 1.9.2'
+
   s.add_development_dependency "bundler"
   s.add_development_dependency "minitest"
   s.add_dependency 'rake'          , '>= 0.8.7'

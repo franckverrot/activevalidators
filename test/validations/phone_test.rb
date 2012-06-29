@@ -49,13 +49,15 @@ describe "Phone Validation" do
 
   describe "for invalid formats" do
     it "rejects invalid formats" do
-      subject = build_phone_validation true, :phone => '999'
+      subject = build_phone_validation true
+      subject.phone = '999'
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end
 
     it "generates an error message of type invalid" do
-      subject = build_phone_validation true, :phone => '999'
+      subject = build_phone_validation true
+      subject.phone = '999'
       subject.valid?.must_equal false
       subject.errors[:phone].include?(subject.errors.generate_message(:phone, :invalid)).must_equal true
     end
