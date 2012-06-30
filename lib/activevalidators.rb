@@ -1,4 +1,6 @@
 require 'active_model'
+require 'phony'
+require 'countries'
 
 module ActiveModel
   module Validations
