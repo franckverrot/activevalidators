@@ -50,7 +50,7 @@ describe "Email Validation" do
     it "accepts complete emails" do
       subject = build_email_record :email => 'franck@verrotfr'
       subject.valid?.must_equal false
-      subject.errors.size.must_equal 0
+      subject.errors.size.must_equal 1
     end
   end
 
