@@ -1,4 +1,4 @@
-# ActiveValidators [![Travis](https://secure.travis-ci.org/cesario/activevalidators.png)](http://travis-ci.org/cesario/activevalidators)
+# ActiveValidators [![Travis](https://secure.travis-ci.org/franckverrot/activevalidators.png)](http://travis-ci.org/franckverrot/activevalidators)
 
 # Description
 
@@ -98,4 +98,4 @@ Lots of improvements can be made:
 
 ## Copyright
 
-Copyright (c) 2010-2011 Franck Verrot. MIT LICENSE. See LICENSE for details.
+Copyright (c) 2010-2012 Franck Verrot. MIT LICENSE. See LICENSE for details.
