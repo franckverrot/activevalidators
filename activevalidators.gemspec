@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Franck Verrot", "Paco Guzmán", "Oriol Gual", "Garrett Bjerkhoel", "Renato Riccieri Santos Zannon", "Brian Moseley"]
   s.email       = ["franck@verrot.fr"]
-  s.homepage    = "http://github.com/cesario/activevalidators"
+  s.homepage    = "http://github.com/franckverrot/activevalidators"
   s.summary     = %q{Collection of ActiveModel/ActiveRecord validations}
   s.description = %q{ActiveValidators is a collection of ActiveModel/ActiveRecord validations}
 
