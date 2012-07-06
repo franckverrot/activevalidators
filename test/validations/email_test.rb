@@ -21,7 +21,7 @@ describe "Email Validation" do
       subject.errors.size.must_equal 0
     end
 
-    it "accepts complete emails" do
+    it "accepts email addresses without TLD" do
       subject = build_email_record({:email => 'franck@verrotfr'}, {:strict => true})
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
@@ -47,7 +47,7 @@ describe "Email Validation" do
       subject.errors.size.must_equal 0
     end
 
-    it "accepts complete emails" do
+    it "rejects email addresses without TLD" do
       subject = build_email_record :email => 'franck@verrotfr'
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
