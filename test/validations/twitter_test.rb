@@ -80,6 +80,13 @@ describe "Twitter Validation" do
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end
+
+    it "generates error with injected content" do
+      subject = build_twitter_record :format => :url
+      subject.twitter_username = "javascript:alert('xss');\nhttp://twitter.com/garrettbjerkhoelwashere"
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
   end
 
   describe "for twitter at sign validator" do
@@ -112,6 +119,13 @@ describe "Twitter Validation" do
     it "generate error with invalid character" do
       subject = build_twitter_record :format => :username_with_at
       subject.twitter_username = '@érik'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
+    it "generate error with injected content" do
+      subject = build_twitter_record :format => :username_with_at
+      subject.twitter_username = "injected\n@erik"
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end
@@ -154,6 +168,13 @@ describe "Twitter Validation" do
     it "generate error with at sign character" do
       subject = build_twitter_record true
       subject.twitter_username = '@garrettb'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
+    it "generate error with at injected data" do
+      subject = build_twitter_record true
+      subject.twitter_username = "something\ngarrettb\nelse"
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end
