@@ -51,6 +51,10 @@ describe "Tracking Number Validation" do
       it "rejects invalid formats and generates an error message of type invalid" do
         assert_invalid_tracking_number({:carrier => :ups}, '1Z12345E020_271688')
       end
+
+      it "rejects injected content" do
+        assert_invalid_tracking_number({:carrier => :ups}, "injected\n1Z12345E0205271688")
+      end
     end
   end
 
@@ -108,6 +112,10 @@ describe "Tracking Number Validation" do
 
       it 'USS128 tracking number with invalid chars' do
         assert_invalid_tracking_number({:carrier => :usps}, 'U11234567891234567879')
+      end
+
+      it 'rejects injected chars in USS39 and others' do
+        assert_invalid_tracking_number({:carrier => :usps}, "injected\nEA123456784US")
       end
     end
   end
