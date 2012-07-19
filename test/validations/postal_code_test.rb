@@ -49,5 +49,11 @@ describe "Postal Code Validation" do
       subject.valid?.must_equal false
       subject.errors[:postal_code].include?(subject.errors.generate_message(:postal_code, :invalid)).must_equal true
     end
+
+    it "rejects injected content" do
+      subject = build_postal_code_record true, :postal_code => "injected\n11211"
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
   end
 end

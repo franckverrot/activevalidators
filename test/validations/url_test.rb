@@ -58,6 +58,13 @@ describe "Url Validation" do
       subject.errors.size.must_equal 1
     end
 
+    it "rejects injected urls" do
+      subject = build_url_record
+      subject.url = "javascript:alert('xss');\nhttp://google.com"
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
     it "generates an error message of type invalid" do
       subject = build_url_record
       subject.url = 'http://^^^^.fr'
