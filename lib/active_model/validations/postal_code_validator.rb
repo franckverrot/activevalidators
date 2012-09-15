@@ -5,11 +5,11 @@ module ActiveModel
         @value = value
         unless country = options[:country]
           if country_method = options[:country_method]
-	    country = record.send(country_method)
+            country = record.send(country_method)
           else
-	    country = 'us'
-	  end
-	end
+            country = 'us'
+          end
+        end
         @formats = PostalCodeValidator.known_formats[country.to_s]
         raise "No known postal code formats for country #{country}" unless @formats
         record.errors.add(attribute) if value.blank? || !matches_any?
