@@ -84,7 +84,7 @@ module ActiveModel
       private
 
       def self.regexp_from(format)
-        Regexp.new '\A' + (Regexp.escape format).gsub(/[@#]/, '@' => '[[:alpha:]]', '#' => 'd') + '\z'
+        Regexp.new '\A' + ActiveValidators::OneNineShims::OneNineString.new(Regexp.escape format).gsub(/[@#]/, '@' => '[[:alpha:]]', '#' => 'd') + '\z'
       end
     end
   end
