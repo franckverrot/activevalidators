@@ -2,6 +2,10 @@ require 'mail'
 module ActiveModel
   module Validations
     class EmailValidator < EachValidator
+      def check_validity!
+        raise ArgumentError, "Not a callable object #{options[:with].inspect}" unless options[:with] == nil || options[:with].respond_to?(:call)
+      end
+
       def validate_each(record, attribute, value)
         # takes from: https://github.com/hallelujah/valid_email
         begin
@@ -24,6 +28,13 @@ module ActiveModel
         rescue Exception => e
           valid = false
         end
+
+        if options[:with]
+          # technically the test suite will pass without the boolean coercion 
+          # but we know the code is safer with it in place
+          valid &&= !!options[:with].call(mail)
+        end
+
         record.errors.add attribute, (options[:message]) unless valid
       end
     end
