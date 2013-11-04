@@ -1,9 +1,16 @@
 require 'test_helper.rb'
+require 'ipaddr'
 
 describe "IP Validation" do
   describe "IPv4 Validation" do
     it "accepts valid IPs" do
       subject = build_ip_record :v4, :ip => '192.168.1.1'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+
+    it "accepts IPAddrs" do
+      subject = build_ip_record :v4, :ip => IPAddr.new('192.168.1.1')
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
@@ -26,6 +33,12 @@ describe "IP Validation" do
   describe "IPv6 Validation" do
     it "accepts valid IPs" do
       subject = build_ip_record :v6, :ip => '::1'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+
+    it "accepts IPAddrs" do
+      subject = build_ip_record :v6, :ip => IPAddr.new('::1')
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
