@@ -1,3 +1,4 @@
+require 'active_support/core_ext/array/wrap'
 require 'uri'
 
 module ActiveModel
