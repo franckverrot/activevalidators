@@ -19,6 +19,7 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :email_address, :email => true # == :email => { :strict => false }
       validates :link_url,      :url   => true
       validates :user_phone,    :phone => true
+      validates :company_siren, :siren => true
       validates :password,      :password => { :strength => :medium }
       validates :twitter_at,    :twitter => { :format => :username_with_at }
       validates :twitter_url,   :twitter => { :format => :url }
@@ -61,6 +62,7 @@ Exhaustive list of supported validators and their implementation:
 * `phone` : based on a set of predefined masks
 * `postal_code`: based on a set of predefined masks
 * `respond_to`
+* `siren`
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
