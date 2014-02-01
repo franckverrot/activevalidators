@@ -46,10 +46,7 @@ module ActiveModel
         end
 
         def self.luhn_valid?(s)
-          return false unless s && s.is_a?(String)
-          return false if s.empty?
           value = s.gsub(/\D/, '')
-          return false if value.empty?
           value.
             reverse.
             each_char.
