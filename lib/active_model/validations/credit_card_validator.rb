@@ -46,19 +46,22 @@ module ActiveModel
         end
 
         def self.luhn_valid?(s)
-          value = s.gsub(/\D/, '')
-          value.
-            reverse.
-            each_char.
-            collect(&:to_i).
-            each_with_index.
-            inject(0) {| num, (i, index) |
-              num + if (index + 1) % 2 == 0
-                      i*=2; ((i > 9) ? (i % 10) + 1 : i)
-              else
-                i
-              end
-          } % 10 == 0
+          value = s.gsub(/\D/, '').reverse
+
+          sum = i = 0
+
+          value.each_char do |ch|
+            n = ch.to_i
+
+            n *= 2 if i.odd?
+
+            n = 1 + (n - 10) if n >= 10
+
+            sum += n
+            i   += 1
+          end
+
+          (sum % 10).zero?
         end
       end
     end
