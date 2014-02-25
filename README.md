@@ -100,4 +100,4 @@ Lots of improvements can be made:
 
 ## Copyright
 
-Copyright (c) 2010-2013 Franck Verrot. MIT LICENSE. See LICENSE for details.
+Copyright (c) 2010-2014 Franck Verrot. MIT LICENSE. See LICENSE for details.
