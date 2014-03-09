@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/franckverrot/activevalidators'
   s.summary     = %q{Collection of ActiveModel/ActiveRecord validations}
   s.description = %q{ActiveValidators is a collection of ActiveModel/ActiveRecord validations}
+  s.license     = 'MIT'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'minitest', '~> 4.2.0' # Rails fixes this...
