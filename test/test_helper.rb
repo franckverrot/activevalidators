@@ -1,20 +1,14 @@
-require 'rubygems'
+gem 'minitest'
+require 'minitest/autorun'
+require 'minitest/mock'
 
 # silence warnings
 old_w, $-w = $-w, false
 
-require 'minitest/spec'
-require 'minitest/mock'
-require 'minitest/autorun'
+require 'activevalidators'
 
 # unsilence warnings
 $-w = old_w
-
-require 'activevalidators'
-
-%w(models).each do |directory|
-  Dir["#{File.dirname(__FILE__)}/#{directory}/*.rb"].each {|f| require f}
-end
 
 class TestRecord
   include ActiveModel::Validations
