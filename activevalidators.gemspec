@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = 'activevalidators'
-  s.version     = '2.1.0'
+  s.version     = '2.1.1.pre1'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Franck Verrot', 'Paco Guzmán', 'Oriol Gual', 'Garrett Bjerkhoel', 'Renato Riccieri Santos Zannon', 'Brian Moseley']
   s.email       = ['franck@verrot.fr']
@@ -21,4 +21,14 @@ Gem::Specification.new do |s|
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")
+
+  s.post_install_message = """
+######################################################################
+#                          ActiveValidators                          #
+######################################################################
+#                                                                    #
+# Version 3 of ActiveValidators will require you to manually require #
+# all the validators used by your application.                       #
+#                                                                    #
+######################################################################"""
 end
