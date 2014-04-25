@@ -25,6 +25,7 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :twitter_url,   :twitter => { :format => :url }
       validates :twitter,       :twitter => true
       validates :postal_code,   :postal_code => { :country => :us }
+      validates :ssn,           :ssn => true
     end
 
     class Article
@@ -64,6 +65,7 @@ Exhaustive list of supported validators and their implementation:
 * `respond_to`
 * `siren`
 * `slug`  : based on `ActiveSupport::String#parameterize`
+* `ssn` : Social Security Number (only for USA). You also may pass type, instead of boolean: `:ssn => {:type => :usa_ssn}` as the alternative.
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
