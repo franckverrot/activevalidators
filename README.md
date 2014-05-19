@@ -26,6 +26,7 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :twitter,       :twitter => true
       validates :postal_code,   :postal_code => { :country => :us }
       validates :ssn,           :ssn => true
+      validated :sin,           :sin => true
     end
 
     class Article
@@ -65,6 +66,7 @@ Exhaustive list of supported validators and their implementation:
 * `respond_to`
 * `siren`
 * `slug`  : based on `ActiveSupport::String#parameterize`
+* `sin` : Social Insurance Number (only for Canada). You also can allow permanent residents cards (such cards start with '9'): `:sin => {:country => :canada, :country_options => {allow_permanent_residents: true}}`
 * `ssn` : Social Security Number (only for USA). You also may pass type, instead of boolean: `:ssn => {:type => :usa_ssn}` as the alternative.
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
@@ -99,6 +101,7 @@ Lots of improvements can be made:
 * Travis Vachon
 * Rob Zuber
 * Manuel Menezes de Sequeira
+* Serj L aka Loremaster
 
 ## Copyright
 
