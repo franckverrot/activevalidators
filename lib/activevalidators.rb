@@ -6,7 +6,7 @@ require 'active_validators/one_nine_shims/one_nine_string'
 module ActiveModel
   module Validations
     def self.activevalidators
-      %w(email url respond_to phone slug ip credit_card date password twitter postal_code tracking_number siren ssn)
+      %w(email url respond_to phone slug ip credit_card date password twitter postal_code tracking_number siren ssn sin)
     end
 
     activevalidators.each do |validator_name|
