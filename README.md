@@ -25,8 +25,12 @@ In your models, the gem provides new validators like `email`, or `url`:
       validates :twitter_url,   :twitter => { :format => :url }
       validates :twitter,       :twitter => true
       validates :postal_code,   :postal_code => { :country => :us }
-      validates :ssn,           :ssn => true
-      validated :sin,           :sin => true
+    end
+
+    class Identification
+      validates :ssn,   :ssn => true
+      validated :sin,   :sin => true
+      validated :nino,  :nino => true
     end
 
     class Article
@@ -60,6 +64,7 @@ Exhaustive list of supported validators and their implementation:
 * `date`  : based on the `DateValidator` gem
 * `email` : based on the `mail` gem
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
+* `nino` : National Insurance number (only for UK). Please, note, that this validation will not accept temporary (such as 63T12345) or administrative numbers (with prefixes like OO, CR, FY, MW, NC, PP, PY, PZ).
 * `password` : based on a set of regular expressions
 * `phone` : based on a set of predefined masks
 * `postal_code`: based on a set of predefined masks
