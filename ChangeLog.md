@@ -1,6 +1,7 @@
 # UNRELEASED (3.0.0)
 
-  * Validators should be manually required. A shortcut exists by requiring "validators/all".
+  * Validators should be manually required. A shortcut exists by requiring "validators/all"
+  * EAN13 barcode validation
 
 # UNREALESED (2.1.1)
 
