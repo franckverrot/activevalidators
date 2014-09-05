@@ -2,12 +2,12 @@ module ActiveModel
   module Validations
     class BarcodeValidator < EachValidator
       def validate_each(record, attribute, value)
+        # EAN13 by default
         format = options.fetch(:format, :ean13)  
         method = "valid_#{format.to_s}?"
         raise "Barcode format not supported (#{format})" unless self.respond_to?(method)
         record.errors.add(attribute) if value.blank? || !self.send(method, value)
       end
-
 
       def valid_ean13?(value)
         if value =~ /^\d{13}$/
@@ -16,6 +16,7 @@ module ActiveModel
       end
 
       private
+        # Comes from http://fr.wikipedia.org/wiki/Code-barres_EAN
         def ean13_check_digit(value)
           even_sum, uneven_sum = 0, 0
           value.split('').each_with_index do |digit, index|
