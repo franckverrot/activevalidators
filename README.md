@@ -56,6 +56,10 @@ In your models, the gem provides new validators like `email`, or `url`:
     class Order
       validates :tracking_num,  :tracking_number => { :carrier => :ups }
     end
+
+    class Product
+      validates :code,          :barcode => { :format => :ean13 }
+    end
 ```
 
 Exhaustive list of supported validators and their implementation:
@@ -76,6 +80,7 @@ Exhaustive list of supported validators and their implementation:
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
+* `barcode`   : based on known formats (default: EAN 13)
 
 ## Todo
 
