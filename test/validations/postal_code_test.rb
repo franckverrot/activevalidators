@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:postal_code)
 
 describe "Postal Code Validation" do
   def build_postal_code_record postal_code, attrs = {}

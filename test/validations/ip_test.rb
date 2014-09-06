@@ -1,5 +1,6 @@
 require 'test_helper'
 require 'ipaddr'
+ActiveValidators.activate(:ip)
 
 describe "IP Validation" do
   describe "IPv4 Validation" do

@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:ssn)
 
 describe "SSN validations" do
   describe "USA ssn" do

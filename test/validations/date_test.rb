@@ -1,5 +1,6 @@
 require 'test_helper'
 require 'active_support/core_ext/hash/reverse_merge'
+ActiveValidators.activate(:date)
 
 # ActiveValidators relies on another gem called "date_validator" edited
 # by the fine folks at Codegram.

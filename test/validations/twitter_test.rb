@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'test_helper'
+ActiveValidators.activate(:twitter)
 
 describe "Twitter Validation" do
   def build_twitter_record format, attrs = {}

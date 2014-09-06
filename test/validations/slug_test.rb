@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:slug)
 
 describe "Slug Validation" do
   def build_slug_validation attrs = {}

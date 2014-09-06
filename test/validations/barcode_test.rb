@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:barcode)
 
 describe "Barcode Validation" do
   describe "EAN13 Validation" do

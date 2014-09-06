@@ -1,11 +1,24 @@
-# UNRELEASED (3.0.0)
+# UNRELEASED (3.0.1)
 
-  * Validators should be manually required. A shortcut exists by requiring "validators/all"
+## FEATURES
+
+  * Remove default requiring
+
+# 3.0.0
+
+*TL;DR : deprecating default require's and introduced a way to activate them independently.*
+
+## BREAKING CHANGES for the 3.x versions
+
+  * Validators should be manually required using `ActiveValidators.activate`. See README for details on how to use it.
+
+## FEATURES
+
+  * Require all the validators by default until 3.0.1
   * EAN13 barcode validation
-
-# UNREALESED (2.1.1)
-
-  * Deprecate the automatic require-ing of validators.
+  * NINO validation (UK)
+  * SIN validation (Canada)
+  * SSN (Social Security Number) validation (USA)
 
 # 2.1.0
 

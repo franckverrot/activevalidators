@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:credit_card)
 
 describe "Credit Card Validation" do
   # Here are some valid credit cards

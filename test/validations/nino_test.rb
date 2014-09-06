@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:nino)
 
 describe "NINO validations" do
   describe "for UK" do

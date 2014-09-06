@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:password)
 
 describe "Password Validation" do
   STRENGTHS = {

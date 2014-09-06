@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:email)
 
 describe "Email Validation" do
   describe "strict: true" do

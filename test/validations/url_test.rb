@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:url)
 
 describe "Url Validation" do
   def build_url_record

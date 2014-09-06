@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:respond_to)
 
 describe "Respond To Validation" do
   def build_respond_to_record attrs = {}

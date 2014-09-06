@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:tracking_number)
 
 describe "Tracking Number Validation" do
   def build_tracking_number_record carrier_opts, attrs = {}

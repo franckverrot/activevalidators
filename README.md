@@ -10,6 +10,21 @@ ActiveValidators is a collection of off-the-shelf and tested ActiveModel/ActiveR
 
 This projects follows [Semantic Versioning a.k.a SemVer](http://semver.org). If you use Bundler, you can use the stabby specifier `~>` safely.
 
+Once you have `require`'d the gem, you will have to activate the validators you
+want to use as ActiveValidators doesn't force you to use them all :
+
+    # Activate all the validators
+    ActiveValidators.activate(:all)
+
+    # Activate only the email and slug validators
+    ActiveValidators.activate(:email, :slug)
+
+    # Activate only the phone
+    ActiveValidators.activate(:phone)
+
+`ActiveValidators.activate` can be called as many times as one wants. It's only
+a syntactic sugar on top a normal Ruby `require`.
+
 ## Usage
 
 In your models, the gem provides new validators like `email`, or `url`:

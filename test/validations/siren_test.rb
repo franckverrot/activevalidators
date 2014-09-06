@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:siren)
 
 describe "Siren Validation" do
   it "Rejects if not supplied" do

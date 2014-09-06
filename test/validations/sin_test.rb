@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:sin)
 
 describe "SIN validations" do
   describe "for Canada" do

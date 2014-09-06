@@ -1,4 +1,5 @@
 require 'test_helper'
+ActiveValidators.activate(:phone)
 
 describe "Phone Validation" do
   def build_phone_validation phone, attrs = {}
