@@ -95,7 +95,7 @@ Exhaustive list of supported validators and their implementation:
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
-* `barcode`   : based on known formats (default: EAN 13)
+* `barcode`   : based on known formats (:ean13 only for now)
 
 ## Todo
 
