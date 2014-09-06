@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = 'activevalidators'
-  s.version     = '2.1.1.pre1'
+  s.version     = '3.0.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Franck Verrot', 'Paco Guzmán', 'Oriol Gual', 'Garrett Bjerkhoel', 'Renato Riccieri Santos Zannon', 'Brian Moseley', 'Serj L aka Loremaster']
   s.email       = ['franck@verrot.fr']
@@ -24,11 +24,16 @@ Gem::Specification.new do |s|
 
   s.post_install_message = """
 ######################################################################
-#                          ActiveValidators                          #
+#                      ActiveValidators v3.0.0                       #
 ######################################################################
 #                                                                    #
-# Version 3 of ActiveValidators will require you to manually require #
-# all the validators used by your application.                       #
+# Version 3 of ActiveValidators stopped requiring all the validators #
+# for you. So you will have to use `ActiveValidators.activate`.      #
+#                                                                    #
+# By default, v3.0.0 does `ActiveValidators.activate(:all)` to help  #
+# transitioning to v3, but 3.0.1 won't do that anymore.              #
+#                                                                    #
+# Thanks for using ActiveValidators !                                #
 #                                                                    #
 ######################################################################"""
 end
