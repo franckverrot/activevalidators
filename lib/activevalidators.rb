@@ -30,6 +30,3 @@ module ActiveValidators
     end
   end
 end
-
-# Deprecated
-warn "[deprecated] ActiveValidators.activate is the recommended solution to require your validators. Please check instructions in the README. Thanks a lot !"
