@@ -53,7 +53,7 @@ describe "NINO validations" do
       it "rejects non allocated prefixes" do
         non_allocated_prefixes = %w[bg, gb, nk, kn, tn, nt, zz]
         non_allocated_prefixes.each do |suffix|
-          invalid_nino = suffix +'123456C'
+          invalid_nino = suffix + '123456C'
           subject = build_nino_record({:nino => invalid_nino})
           subject.valid?.must_equal false
         end
@@ -62,7 +62,7 @@ describe "NINO validations" do
       it "rejects administrative numbers" do
         administrative_numbers = %w[oo, cr, fy, mw, nc, pp, py, pz]
         administrative_numbers.each do |suffix|
-          invalid_nino = suffix +'123456C'
+          invalid_nino = suffix + '123456C'
           subject = build_nino_record({:nino => invalid_nino})
           subject.valid?.must_equal false
         end
