@@ -1,7 +1,8 @@
 module ActiveModel
   module Validations
     class BarcodeValidator < EachValidator
-
+      # We check the validity of :format option
+      # More at https://github.com/rails/rails/blob/aa7fdfb859d8a73f58460a7aba7174a47b5101d5/activemodel/lib/active_model/validator.rb#L180
       def check_validity!
         format = options.fetch(:format)
         raise ArgumentError, ":format cannot be blank!" if format.blank?

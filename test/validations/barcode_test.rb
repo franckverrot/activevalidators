@@ -39,7 +39,7 @@ describe "Barcode Validation" do
     end
 
     it "raises an error when you omit format option" do
-      error = assert_raises(ArgumentError) do
+      error = assert_raises ArgumentError do
         build_barcode_record nil, :barcode => "9782940199617"
       end
       error.message.must_equal ":format cannot be blank!"
