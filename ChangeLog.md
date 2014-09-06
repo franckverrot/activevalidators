@@ -2,12 +2,14 @@
 
   * Nothing yet.
 
-# 3.0.1
+# 3.1.0
 
 ## FEATURES
 
   * Remove default requiring
   * Remove deprecation messages about `ActiveValidators.activate`
+
+# 3.0.1 (yanked, it's now 3.1.0)
 
 # 3.0.0
 
