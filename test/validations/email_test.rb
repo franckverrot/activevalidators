@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Email Validation" do
   describe "strict: true" do

@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Respond To Validation" do
   def build_respond_to_record attrs = {}

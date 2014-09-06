@@ -1,5 +1,5 @@
 # coding: utf-8
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Twitter Validation" do
   def build_twitter_record format, attrs = {}

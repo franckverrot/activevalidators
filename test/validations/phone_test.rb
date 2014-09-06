@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Phone Validation" do
   def build_phone_validation phone, attrs = {}

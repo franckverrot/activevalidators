@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "SSN validations" do
   describe "USA ssn" do

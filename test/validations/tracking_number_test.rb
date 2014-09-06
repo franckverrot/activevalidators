@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Tracking Number Validation" do
   def build_tracking_number_record carrier_opts, attrs = {}

@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Siren Validation" do
   it "Rejects if not supplied" do

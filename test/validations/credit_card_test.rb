@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Credit Card Validation" do
   # Here are some valid credit cards

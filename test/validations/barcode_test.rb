@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Barcode Validation" do
   describe "EAN13 Validation" do

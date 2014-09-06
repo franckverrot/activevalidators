@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Postal Code Validation" do
   def build_postal_code_record postal_code, attrs = {}

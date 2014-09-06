@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 
 describe "Slug Validation" do
   def build_slug_validation attrs = {}

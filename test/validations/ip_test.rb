@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require 'test_helper'
 require 'ipaddr'
 
 describe "IP Validation" do
