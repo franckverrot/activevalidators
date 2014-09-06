@@ -112,6 +112,7 @@ Lots of improvements can be made:
 * Rob Zuber
 * Manuel Menezes de Sequeira
 * Serj L aka Loremaster
+* Pierre-Baptiste Béchu
 
 ## Copyright
 
