@@ -1,11 +1,16 @@
 module ActiveModel
   module Validations
     class BarcodeValidator < EachValidator
-      def validate_each(record, attribute, value)
-        # EAN13 by default
-        format = options.fetch(:format, :ean13)  
+
+      def check_validity!
+        format = options.fetch(:format)
+        raise ArgumentError, ":format cannot be blank!" if format.blank?
         method = "valid_#{format.to_s}?"
-        raise "Barcode format not supported (#{format})" unless self.respond_to?(method)
+        raise ArgumentError, "Barcode format (#{format}) not supported" unless self.respond_to?(method)
+      end
+
+      def validate_each(record, attribute, value)
+        method = "valid_#{options[:format].to_s}?"
         record.errors.add(attribute) if value.blank? || !self.send(method, value)
       end
 
