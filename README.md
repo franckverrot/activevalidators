@@ -4,6 +4,20 @@
 
 ActiveValidators is a collection of off-the-shelf and tested ActiveModel/ActiveRecord validations.
 
+## Verify authenticity of this gem
+
+ActiveValidators is cryptographically signed. Please make sure the gem you install hasn’t been tampered with.
+
+Add my public key (if you haven’t already) as a trusted certificate:
+
+    gem cert --add <(curl -Ls https://raw.githubusercontent.com/franckverrot/activevalidators/master/certs/franckverrot.pem)
+
+    gem install activevalidators -P MediumSecurity
+
+The MediumSecurity trust profile will verify signed gems, but allow the installation of unsigned dependencies.
+
+This is necessary because not all of ActiveValidators’ dependencies are signed, so we cannot use HighSecurity.
+
 ## Installation
 
     gem install activevalidators

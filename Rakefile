@@ -47,6 +47,12 @@ task :gem => [:gemspec, :build] do
   mkdir_p "pkg"
   sh "gem build activevalidators.gemspec"
   mv "#{gemspec.full_name}.gem", "pkg"
+
+  require 'digest/sha2'
+  built_gem_path = "pkg/#{gemspec.full_name}.gem"
+  checksum = Digest::SHA512.new.hexdigest(File.read(built_gem_path))
+  checksum_path = "checksums/#{gemspec.version}.sha512"
+  File.open(checksum_path, 'w' ) {|f| f.write(checksum) }
 end
 
 desc "Install ActiveValidators"
