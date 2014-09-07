@@ -9,6 +9,12 @@ describe "Barcode Validation" do
       subject.errors.size.must_equal 0
     end
 
+    it "accepts EAN13s as integers" do
+      subject = build_barcode_record :ean13, :barcode => 9782940199617
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+
     describe "for invalid EAN13s" do
       it "rejects invalid EAN13s" do
         subject = build_barcode_record :ean13, :barcode => "9782940199616"

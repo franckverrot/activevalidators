@@ -12,7 +12,7 @@ module ActiveModel
 
       def validate_each(record, attribute, value)
         method = "valid_#{options[:format].to_s}?"
-        record.errors.add(attribute) if value.blank? || !self.send(method, value)
+        record.errors.add(attribute) if value.blank? || !self.send(method, value.to_s)
       end
 
       def valid_ean13?(value)
