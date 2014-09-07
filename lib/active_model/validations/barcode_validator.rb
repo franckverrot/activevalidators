@@ -32,7 +32,7 @@ module ActiveModel
               uneven_sum += digit.to_i
             end
           end
-          (10 - ((even_sum*3 + uneven_sum) % 10)).to_s
+          ((10 - ((even_sum*3 + uneven_sum) % 10)) % 10).to_s
         end
     end
   end
