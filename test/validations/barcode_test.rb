@@ -4,9 +4,11 @@ ActiveValidators.activate(:barcode)
 describe "Barcode Validation" do
   describe "EAN13 Validation" do
     it "accepts valid EAN13s" do
-      subject = build_barcode_record :ean13, :barcode => "9782940199617"
-      subject.valid?.must_equal true
-      subject.errors.size.must_equal 0
+      ["9782940199617", "9782940199600"].each do |barcode|
+        subject = build_barcode_record :ean13, :barcode => barcode
+        subject.valid?.must_equal true
+        subject.errors.size.must_equal 0
+      end
     end
 
     it "accepts EAN13s as integers" do
