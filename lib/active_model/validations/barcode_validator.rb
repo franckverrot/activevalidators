@@ -12,7 +12,7 @@ module ActiveModel
 
       def validate_each(record, attribute, value)
         method = "valid_#{options[:format].to_s}?"
-        record.errors.add(attribute) if value.blank? || !self.send(method, value)
+        record.errors.add(attribute) if value.blank? || !self.send(method, value.to_s)
       end
 
       def valid_ean13?(value)
@@ -32,7 +32,7 @@ module ActiveModel
               uneven_sum += digit.to_i
             end
           end
-          (10 - ((even_sum*3 + uneven_sum) % 10)).to_s
+          ((10 - ((even_sum*3 + uneven_sum) % 10)) % 10).to_s
         end
     end
   end
