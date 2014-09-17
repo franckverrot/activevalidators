@@ -114,6 +114,7 @@ Exhaustive list of supported validators and their implementation:
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
 * `barcode`   : based on known formats (:ean13 only for now)
+* `hex_color` : based on a regular expression
 
 ## Todo
 
