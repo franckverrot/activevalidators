@@ -2,16 +2,18 @@ module ActiveModel
   module Validations
     class SsnValidator < EachValidator
       def validate_each(record, attribute, value)
-        type = options.fetch(:type, :usa_ssn)                                                       # :usa_ssn is default.
-        record.errors.add(attribute) if value.blank? || !SsnValidatorGeneral.valid?(type, value)
+        record.errors.add(attribute) if value.blank? || !SsnValidatorGeneral.valid?(options, value)
       end
     end
 
+    # <b>DEPRECATED:</b> Please use <tt>:ssn => true</tt> instead.
     class SsnValidatorGeneral
-      def self.valid?(type, value)
-        if type == :usa_ssn
-          SsnValidatorUSA.new(value).valid?
+      def self.valid?(options, value)
+        if options[:type] == :usa_ssn
+          warn "[DEPRECATION] providing {:type => :usa_ssn} is deprecated and will be removed in the future. Please use `:ssn => true` instead."
         end
+
+        SsnValidatorUSA.new(value).valid?
       end
     end
 
