@@ -93,6 +93,10 @@ In your models, the gem provides new validators like `email`, or `url`:
     class Product
       validates :code,          :barcode => { :format => :ean13 }
     end
+
+    class System
+      validates :regexp,        :regexp => true
+    end
 ```
 
 Exhaustive list of supported validators and their implementation:
@@ -115,6 +119,7 @@ Exhaustive list of supported validators and their implementation:
 * `url`   : based on a regular expression
 * `barcode`   : based on known formats (:ean13 only for now)
 * `hex_color` : based on a regular expression
+* `regexp` : checking if attributes is a regular expression
 
 ## Todo
 

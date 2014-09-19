@@ -5,7 +5,7 @@ require 'active_validators/one_nine_shims/one_nine_string'
 
 module ActiveValidators
   def self.activevalidators
-    %w(email url respond_to phone slug ip credit_card date password twitter postal_code tracking_number siren ssn sin nino barcode date hex_color)
+    %w(email url respond_to phone slug ip credit_card date password twitter postal_code tracking_number siren ssn sin nino barcode date hex_color regexp)
   end
 
   # Require each validator independently or just pass :all
