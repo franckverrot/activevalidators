@@ -115,6 +115,7 @@ Exhaustive list of supported validators and their implementation:
 * `url`   : based on a regular expression
 * `barcode`   : based on known formats (:ean13 only for now)
 * `hex_color` : based on a regular expression
+* `regexp` : uses Ruby's [`Regexp.compile`](http://www.ruby-doc.org/core-2.1.1/Regexp.html#method-c-new) method
 
 ## Todo
 
