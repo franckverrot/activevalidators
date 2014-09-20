@@ -109,7 +109,7 @@ Exhaustive list of supported validators and their implementation:
 * `siren`
 * `slug`  : based on `ActiveSupport::String#parameterize`
 * `sin` : Social Insurance Number (only for Canada). You also can allow permanent residents cards (such cards start with '9'): `:sin => {:country => :canada, :country_options => {allow_permanent_residents: true}}`
-* `ssn` : Social Security Number (only for USA). You also may pass type, instead of boolean: `:ssn => {:type => :usa_ssn}` as the alternative.
+* `ssn` : Social Security Number (only for USA).
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
