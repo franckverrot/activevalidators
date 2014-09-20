@@ -1,6 +1,13 @@
 # UNRELEASED
 
-  * Nothing yet.
+
+## DEPRECATION
+
+  * [SSN validations doesn't support any options anymore][ssn_validation_options]
+  * 
+## FEATURES
+
+  * Regexp validator.
 
 # 3.1.0
 
@@ -195,3 +202,6 @@
   * Add errors with the ActiveModel::Errors#add method -> i18n support
   * Add phone format validator
   * Public release
+
+
+[ssn_validation_options]: https://github.com/franckverrot/activevalidators/commit/dee076a8e344897f0325747504625285be7da226
