@@ -50,7 +50,7 @@ In your models, the gem provides new validators like `email`, or `url`:
 ```ruby
     class User
       validates :email_address, :email => true # == :email => { :strict => false }
-      validates :link_url,      :url   => true
+      validates :link_url,      :url   => true # (Could be combined with `allow_blank: true`)
       validates :user_phone,    :phone => true
       validates :company_siren, :siren => true
       validates :password,      :password => { :strength => :medium }
