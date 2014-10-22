@@ -1,4 +1,4 @@
-require 'active_model/validations/shared/luhn_checker'
+require 'active_validators/active_model/validations/shared/luhn_checker'
 
 module ActiveModel
   module Validations

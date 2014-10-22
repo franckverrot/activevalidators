@@ -17,7 +17,7 @@ module ActiveValidators
     syms = validators.include?(:all) ? activevalidators : validators.map(&:to_s) & activevalidators
 
     syms.each do |validator_name|
-      require "active_model/validations/#{validator_name}_validator"
+      require "active_validators/active_model/validations/#{validator_name}_validator"
     end
   end
 
