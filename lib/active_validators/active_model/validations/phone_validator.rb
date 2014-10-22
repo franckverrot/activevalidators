@@ -1,3 +1,5 @@
+require 'phony'
+require 'countries'
 module ActiveModel
   module Validations
     class PhoneValidator < EachValidator

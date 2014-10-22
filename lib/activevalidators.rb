@@ -1,6 +1,4 @@
 require 'active_model'
-require 'phony'
-require 'countries'
 require 'active_validators/one_nine_shims/one_nine_string'
 
 module ActiveValidators
