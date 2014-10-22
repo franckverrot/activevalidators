@@ -11,7 +11,7 @@ module ActiveModel
           mail = Mail::Address.new(value)
 
           valid = basic_check(mail) && value.include?(mail.address)
-        rescue Exception => e
+        rescue Exception => _
           valid = false
         end
 
