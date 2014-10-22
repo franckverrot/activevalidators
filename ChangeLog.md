@@ -1,10 +1,15 @@
 # UNRELEASED
 
+# 3.2.0
+
+## MAJOR CHANGES
+
+  * Ensure the $LOAD\_PATH could never break ActiveValidators (see #71 for details)
 
 ## DEPRECATION
 
   * [SSN validations doesn't support any options anymore][ssn_validation_options]
-  * 
+
 ## FEATURES
 
   * Regexp validator.
