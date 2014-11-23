@@ -81,9 +81,10 @@ In your models, the gem provides new validators like `email`, or `url`:
     end
 
     class Account
-      validates :any_card,      :credit_card => true
-      validates :visa_card,     :credit_card => { :type => :visa }
-      validates :credit_card,   :credit_card => { :type => :any  }
+      validates :any_card,        :credit_card => true
+      validates :visa_card,       :credit_card => { :type => :visa }
+      validates :credit_card,     :credit_card => { :type => :any  }
+      validates :supported_card,  :credit_card => { :type => [:visa, :master_card, :amex] }
     end
 
     class Order
@@ -97,7 +98,7 @@ In your models, the gem provides new validators like `email`, or `url`:
 
 Exhaustive list of supported validators and their implementation:
 
-* `credit_card` : based on the `Luhn` algorithm
+* `credit_card` : based on the `credit_card_validations` gem
 * `date`  : based on the `DateValidator` gem
 * `email` : based on the `mail` gem
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
