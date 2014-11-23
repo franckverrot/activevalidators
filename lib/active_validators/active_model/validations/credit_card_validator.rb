@@ -1,53 +1,60 @@
-require 'active_validators/active_model/validations/shared/luhn_checker'
-
+require 'credit_card_validations'
 module ActiveModel
   module Validations
 
     class CreditCardValidator < EachValidator
       def validate_each(record, attribute, value)
-        type = options.fetch(:type, :any)
-        record.errors.add(attribute) if value.blank? || !Luhn.valid?(type, sanitize_card(value))
+        brand = options.fetch(:type, :any)
+        brands = (brand == :any ? [] : Array.wrap(brand))
+        record.errors.add(attribute) if value.blank? || !ActiveCreditCardBrand.new(value).valid?(*brands)
       end
 
-      def sanitize_card(value)
-        value.tr('- ','')
-      end
+      class ActiveCreditCardBrand
 
-      class Luhn
-        def self.valid?(card_type,number)
-          if card_type == :any
-            LuhnChecker.valid?(number)
-          else
-            self.send("#{card_type.to_s}?", number)
+        DEPRECATED_BRANDS = [
+            :en_route, # belongs to Diners Club  since 1992 obsolete
+            :carte_blanche, # belongs to Diners Club ,was finally phased out by 2005
+            :switch #renamed to Maestro in 2002
+        ]
+
+        BRANDS_ALIASES = {
+            master_card: :mastercard,
+            diners_club: :diners,
+            en_route: :diners,
+            carte_blanche: :diners,
+            switch: :maestro
+        }
+
+        def initialize(number)
+          @number = number
+        end
+
+        def valid?(*brands)
+          deprecated_brands(brands).each do |brand|
+            ActiveSupport::Deprecation.warn("support for #{brand} will be removed in future versions, please use #{BRANDS_ALIASES[brand]} instead")
           end
+          detector.valid?(*normalize_brands(brands))
         end
 
-        def self.mastercard?(number)
-          LuhnChecker.valid?(number) and !(number !~ /^5[1-5].{14}/)
+        private
+
+        def detector
+          CreditCardValidations::Detector.new(@number)
         end
 
-        class << self
-          alias :master_card? :mastercard?
+        def deprecated_brands(brands)
+          DEPRECATED_BRANDS & brands
         end
 
-        def self.visa?(number)
-          LuhnChecker.valid?(number) and !(number !~ /^4.{15}/)
-        end
-
-        def self.amex?(number)
-          LuhnChecker.valid?(number) and !(number !~ /^3[47].{13}/)
-        end
-
-        [:diners_club, :en_route, :discover, :jcb, :carte_blanche, :switch,
-          :solo, :laser].each do |card_type|
-          class_eval <<-VALIDATOR, __FILE__, __LINE__ + 1
-          def self.#{card_type}?(number)
-            LuhnChecker.valid?(number)
+        def normalize_brands(brands = [])
+          brands.uniq.each_with_index do |brand, index|
+            brands[index] = BRANDS_ALIASES[brand].present? ? BRANDS_ALIASES[brand] : brand
           end
-          VALIDATOR
+          brands
         end
+
       end
+
     end
-
   end
 end
