@@ -48,52 +48,52 @@ a syntactic sugar on top a normal Ruby `require`.
 In your models, the gem provides new validators like `email`, or `url`:
 
 ```ruby
-    class User
-      validates :email_address, :email => true # == :email => { :strict => false }
-      validates :link_url,      :url   => true # (Could be combined with `allow_blank: true`)
-      validates :user_phone,    :phone => true
-      validates :company_siren, :siren => true
-      validates :password,      :password => { :strength => :medium }
-      validates :twitter_at,    :twitter => { :format => :username_with_at }
-      validates :twitter_url,   :twitter => { :format => :url }
-      validates :twitter,       :twitter => true
-      validates :postal_code,   :postal_code => { :country => :us }
-    end
+class User
+  validates :email_address, :email => true # == :email => { :strict => false }
+  validates :link_url,      :url   => true # (Could be combined with `allow_blank: true`)
+  validates :user_phone,    :phone => true
+  validates :company_siren, :siren => true
+  validates :password,      :password => { :strength => :medium }
+  validates :twitter_at,    :twitter => { :format => :username_with_at }
+  validates :twitter_url,   :twitter => { :format => :url }
+  validates :twitter,       :twitter => true
+  validates :postal_code,   :postal_code => { :country => :us }
+end
 
-    class Identification
-      validates :ssn,   :ssn => true
-      validates :sin,   :sin => true
-      validates :nino,  :nino => true
-    end
+class Identification
+  validates :ssn,   :ssn => true
+  validates :sin,   :sin => true
+  validates :nino,  :nino => true
+end
 
-    class Article
-      validates :slug,          :slug => true
-      validates :expiration_date,
-                      :date => {
-                                 :after => lambda { Time.now },
-                                 :before => lambda { Time.now + 1.year }
-                               }
-    end
+class Article
+  validates :slug,          :slug => true
+  validates :expiration_date,
+                  :date => {
+                             :after => lambda { Time.now },
+                             :before => lambda { Time.now + 1.year }
+                           }
+end
 
-    class Device
-      validates :ipv6,          :ip => { :format => :v6 }
-      validates :ipv4,          :ip => { :format => :v4 }
-    end
+class Device
+  validates :ipv6,          :ip => { :format => :v6 }
+  validates :ipv4,          :ip => { :format => :v4 }
+end
 
-    class Account
-      validates :any_card,        :credit_card => true
-      validates :visa_card,       :credit_card => { :type => :visa }
-      validates :credit_card,     :credit_card => { :type => :any  }
-      validates :supported_card,  :credit_card => { :type => [:visa, :master_card, :amex] }
-    end
+class Account
+  validates :any_card,        :credit_card => true
+  validates :visa_card,       :credit_card => { :type => :visa }
+  validates :credit_card,     :credit_card => { :type => :any  }
+  validates :supported_card,  :credit_card => { :type => [:visa, :master_card, :amex] }
+end
 
-    class Order
-      validates :tracking_num,  :tracking_number => { :carrier => :ups }
-    end
+class Order
+  validates :tracking_num,  :tracking_number => { :carrier => :ups }
+end
 
-    class Product
-      validates :code,          :barcode => { :format => :ean13 }
-    end
+class Product
+  validates :code,          :barcode => { :format => :ean13 }
+end
 ```
 
 Exhaustive list of supported validators and their implementation:
