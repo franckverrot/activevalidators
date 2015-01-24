@@ -1,5 +1,7 @@
 # UNRELEASED
 
+  * Loosen up the dependency on countries
+
 # 3.2.0
 
 ## MAJOR CHANGES
