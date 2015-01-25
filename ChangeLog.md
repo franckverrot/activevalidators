@@ -1,6 +1,7 @@
 # UNRELEASED
 
   * Make country case-insensitive for postal codes
+  * Loosen up the dependency on countries
 
 # 3.2.0
 

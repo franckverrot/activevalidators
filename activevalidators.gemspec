@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rake'          , '>= 0.8.7'
   s.add_dependency 'activemodel'   , '>= 3.0.0'
   s.add_dependency 'phony'         , '>= 1.9.0'
-  s.add_dependency 'countries'     , '~> 0.9.3'
+  s.add_dependency 'countries'     , '>= 0.9.3'
   s.add_dependency 'mail'
   s.add_dependency 'date_validator'
   s.add_dependency 'credit_card_validations', '~> 1.4.5'
