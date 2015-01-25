@@ -1,5 +1,7 @@
 # UNRELEASED
 
+  * Make country case-insensitive for postal codes
+
 # 3.2.0
 
 ## MAJOR CHANGES

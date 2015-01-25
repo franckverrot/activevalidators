@@ -27,8 +27,15 @@ describe "Postal Code Validation" do
   ActiveModel::Validations::PostalCodeValidator.known_formats.each do |country, formats|
     describe "when given a :#{country} country parameter" do
       formats.each do |format|
-        it "should validate format of postal code with #{format}" do
+        it "should validate format of lowercase postal code with #{format}" do
           subject = build_postal_code_record :country => country
+          subject.postal_code = ActiveValidators::OneNineShims::OneNineString.new(format).gsub(/[@#]/, '@' => 'A', '#' => '9')
+          subject.valid?.must_equal true
+          subject.errors.size.must_equal 0
+        end
+
+        it "should validate format of upcase postal code with #{format}" do
+          subject = build_postal_code_record :country => country.upcase
           subject.postal_code = ActiveValidators::OneNineShims::OneNineString.new(format).gsub(/[@#]/, '@' => 'A', '#' => '9')
           subject.valid?.must_equal true
           subject.errors.size.must_equal 0
