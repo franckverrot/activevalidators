@@ -43,6 +43,10 @@ want to use as ActiveValidators doesn't force you to use them all :
 `ActiveValidators.activate` can be called as many times as one wants. It's only
 a syntactic sugar on top a normal Ruby `require`.
 
+In a standard Ruby on Rails application, this line goes either in an initializer
+(`config/initializers/active_validators_activation.rb` for example), or directly
+within `config/application` right inside your `MyApp::Application` class definition.
+
 ## Usage
 
 In your models, the gem provides new validators like `email`, or `url`:
