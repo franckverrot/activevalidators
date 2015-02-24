@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'countries'     , '>= 0.9.3'
   s.add_dependency 'mail'
   s.add_dependency 'date_validator'
-  s.add_dependency 'credit_card_validations', '~> 1.4.5'
+  s.add_dependency 'credit_card_validations', '~> 2.0.2'
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")
