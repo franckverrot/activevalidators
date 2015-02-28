@@ -53,35 +53,34 @@ In your models, the gem provides new validators like `email`, or `url`:
 
 ```ruby
 class User
-  validates :email_address, :email => true # == :email => { :strict => false }
-  validates :link_url,      :url   => true # (Could be combined with `allow_blank: true`)
-  validates :user_phone,    :phone => true
-  validates :company_siren, :siren => true
-  validates :password,      :password => { :strength => :medium }
-  validates :twitter_at,    :twitter => { :format => :username_with_at }
-  validates :twitter_url,   :twitter => { :format => :url }
-  validates :twitter,       :twitter => true
+  validates :company_siren, :siren       => true
+  validates :email_address, :email       => true # == :email => { :strict => false }
+  validates :link_url,      :url         => true # Could be combined with `allow_blank: true`
+  validates :password,      :password    => { :strength => :medium }
   validates :postal_code,   :postal_code => { :country => :us }
+  validates :twitter,       :twitter     => true
+  validates :twitter_at,    :twitter     => { :format => :username_with_at }
+  validates :twitter_url,   :twitter     => { :format => :url }
+  validates :user_phone,    :phone       => true
 end
 
 class Identification
-  validates :ssn,   :ssn => true
-  validates :sin,   :sin => true
-  validates :nino,  :nino => true
+  validates :nino, :nino => true
+  validates :sin,  :sin  => true
+  validates :ssn,  :ssn  => true
 end
 
 class Article
-  validates :slug,          :slug => true
-  validates :expiration_date,
-                  :date => {
-                             :after => lambda { Time.now },
-                             :before => lambda { Time.now + 1.year }
-                           }
+  validates :slug,            :slug => true
+  validates :expiration_date, :date => {
+                                          :after => lambda { Time.now },
+                                          :before => lambda { Time.now + 1.year }
+                                        }
 end
 
 class Device
-  validates :ipv6,          :ip => { :format => :v6 }
-  validates :ipv4,          :ip => { :format => :v4 }
+  validates :ipv4, :ip => { :format => :v4 }
+  validates :ipv6, :ip => { :format => :v6 }
 end
 
 class Account
@@ -92,35 +91,35 @@ class Account
 end
 
 class Order
-  validates :tracking_num,  :tracking_number => { :carrier => :ups }
+  validates :tracking_num, :tracking_number => { :carrier => :ups }
 end
 
 class Product
-  validates :code,          :barcode => { :format => :ean13 }
+  validates :code, :barcode => { :format => :ean13 }
 end
 ```
 
 Exhaustive list of supported validators and their implementation:
 
-* `credit_card` : based on the `credit_card_validations` gem
-* `date`  : based on the `DateValidator` gem
-* `email` : based on the `mail` gem
+* `barcode`   : based on known formats (:ean13 only for now)
+* `credit_card` : based on the [`credit_card_validations`](https://github.com/Fivell/credit_card_validations) gem
+* `date`  : based on the [`date_validator`](https://github.com/codegram/date_validator) gem
+* `email` : based on the [`mail`](https://github.com/mikel/mail) gem
+* `hex_color` : based on a regular expression
 * `ip`    : based on `Resolv::IPv[4|6]::Regex`
 * `nino` : National Insurance number (only for UK). Please note that this validation will not accept temporary (such as 63T12345) or administrative numbers (with prefixes like OO, CR, FY, MW, NC, PP, PY, PZ).
 * `password` : based on a set of regular expressions
 * `phone` : based on a set of predefined masks
 * `postal_code`: based on a set of predefined masks
-* `respond_to`
-* `siren`
+* `regexp` : uses Ruby's [`Regexp.compile`](http://www.ruby-doc.org/core-2.1.1/Regexp.html#method-c-new) method
+* `respond_to` : generic Ruby `respond_to`
+* `siren` : [SIREN](http://fr.wikipedia.org/wiki/SIREN) company numbers in France
 * `slug`  : based on `ActiveSupport::String#parameterize`
-* `sin` : Social Insurance Number (only for Canada). You also can allow permanent residents cards (such cards start with '9'): `:sin => {:country => :canada, :country_options => {allow_permanent_residents: true}}`
+* `sin` : Social Insurance Number (only for Canada). You may also allow permanent resident cards (such cards start with '9'): `:sin => {:country => :canada, :country_options => {allow_permanent_residents: true}}`
 * `ssn` : Social Security Number (only for USA).
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
-* `barcode`   : based on known formats (:ean13 only for now)
-* `hex_color` : based on a regular expression
-* `regexp` : uses Ruby's [`Regexp.compile`](http://www.ruby-doc.org/core-2.1.1/Regexp.html#method-c-new) method
 
 ## Todo
 
