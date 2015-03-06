@@ -13,16 +13,14 @@ module ActiveModel
 
         DEPRECATED_BRANDS = [
             :en_route, # belongs to Diners Club  since 1992 obsolete
-            :carte_blanche, # belongs to Diners Club ,was finally phased out by 2005
-            :switch #renamed to Maestro in 2002
+            :carte_blanche # belongs to Diners Club ,was finally phased out by 2005
         ]
 
         BRANDS_ALIASES = {
             master_card: :mastercard,
             diners_club: :diners,
             en_route: :diners,
-            carte_blanche: :diners,
-            switch: :maestro
+            carte_blanche: :diners
         }
 
         def initialize(number)
