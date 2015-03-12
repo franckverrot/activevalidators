@@ -63,7 +63,7 @@ module ActiveModel
       #
       # Returns the Regexp.
       def uri_regexp
-        @uri_regexp ||= /\A#{URI.regexp(protocols)}\z/
+        @uri_regexp ||= /\A#{URI::Parser.new.make_regexp(protocols)}\z/
       end
 
       # Internal: Tries to convert supplied string into URI,
