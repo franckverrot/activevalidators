@@ -1,7 +1,19 @@
 # UNRELEASED
 
-  * Make country case-insensitive for postal codes
-  * Loosen up the dependency on countries
+# 3.3.0
+
+## DEPRECATION
+
+  * Credit Cards: `carte_blanche` is going away, please use `dinners` instead
+
+## CHANGES
+
+  * Postal code validator: Make country case-insensitive for postal codes
+  * URL validator: Remove obsolete usage of URI.regexp
+  * CC validator: Use the `credit_card_validations` gem for CC validations
+  * README: Details about activating AV w/ Rails
+  * Spec: Links to dependency gems for convenience; sorting ; code :sparkles:.
+  * General: Loosen up the dependency on countries
 
 # 3.2.0
 
