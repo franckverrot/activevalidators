@@ -1,5 +1,16 @@
 # UNRELEASED
 
+# 3.4.0 (unreleased)
+
+## BREAKING CHANGES
+
+ * Dropped support for 1.9.3
+
+## DEPRECATION
+
+## CHANGES
+
+
 # 3.3.0
 
 ## DEPRECATION

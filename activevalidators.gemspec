@@ -10,6 +10,8 @@ Gem::Specification.new do |s|
   s.description = %q{ActiveValidators is a collection of ActiveModel/ActiveRecord validations}
   s.license     = 'MIT'
 
+  s.required_ruby_version = '>= 2.0'
+
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'minitest', '~> 4.2.0' # Rails fixes this...
   s.add_dependency 'rake'          , '>= 0.8.7'
