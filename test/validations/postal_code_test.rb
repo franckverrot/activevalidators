@@ -44,6 +44,15 @@ describe "Postal Code Validation" do
     end
   end
 
+  describe "for a country without known formats" do
+    it "accepts anything" do
+      # aa is not in ActiveModel::Validations::PostalCodeValidator.known_formats
+      subject = build_postal_code_record :country => 'aa'
+      subject.postal_code = '999'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+  end
 
   describe "for invalid formats" do
     it "rejects invalid formats" do

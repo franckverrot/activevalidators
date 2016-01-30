@@ -11,7 +11,6 @@ module ActiveModel
           end
         end
         @formats = PostalCodeValidator.known_formats[country.to_s.downcase]
-        raise "No known postal code formats for country #{country}" unless @formats
         record.errors.add(attribute) if value.blank? || !matches_any?
       end
 
@@ -34,6 +33,7 @@ module ActiveModel
           'fi' => ['#####'],
           'fr' => ['#####'],
           'uk' => ['@# #@@', '@## #@@', '@@# #@@', '@@## #@@', '@#@ #@@', '@@#@ #@@'],
+          'gb' => ['@# #@@', '@## #@@', '@@# #@@', '@@## #@@', '@#@ #@@', '@@#@ #@@'],
           'gf' => ['#####'],
           'gl' => ['####'],
           'gp' => ['#####'],
@@ -57,6 +57,7 @@ module ActiveModel
           'my' => ['#####'],
           'nl' => ['#### @@', '####@@'],
           'no' => ['####'],
+          'nz' => ['####'],
           'ph' => ['####'],
           'pk' => ['#####'],
           'pl' => ['##-###', '#####'],
@@ -64,6 +65,7 @@ module ActiveModel
           'pt' => ['####', '####-###'],
           'ru' => ['######'],
           'se' => ['SE-#### ##', '#### ##', '######'],
+          'sg' => ['######'],
           'si' => ['SI- ####', 'SI-####', '####'],
           'sk' => ['### ##', '#####'],
           'sm' => ['4789#', '#'],
@@ -76,7 +78,7 @@ module ActiveModel
       end
 
       def matches_any?
-        false if @formats.nil? or not @formats.respond_to?(:detect)
+        return true if @formats.nil? or not @formats.respond_to?(:detect)
         @formats.detect { |format| @value.match(PostalCodeValidator.regexp_from format) }
       end
 
