@@ -126,7 +126,7 @@ Exhaustive list of supported validators and their implementation:
 
 The validators rely on ActiveModel validations, and will require one to use its i18n-based mechanism. Here is a basic example:
 
-```
+```ruby
 # user.rb
 
 class User < ActiveRecord::Base
@@ -134,7 +134,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-```
+```yaml
 # en.yml
 
 en:
