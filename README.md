@@ -121,6 +121,32 @@ Exhaustive list of supported validators and their implementation:
 * `twitter` : based on a regular expression
 * `url`   : based on a regular expression
 
+
+### Handling error messages
+
+The validators rely on ActiveModel validations, and will require one to use its i18n-based mechanism. Here is a basic example:
+
+```
+# user.rb
+
+class User < ActiveRecord::Base
+  validates :email, email: {message: :bad_email}
+end
+```
+
+```
+# en.yml
+
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              bad_email: "your error message"
+```
+
 ## Todo
 
 Lots of improvements can be made:
