@@ -25,8 +25,6 @@ describe "Credit Card Validation" do
           :maestro => '6759 6498 2643 8453',
           #Visa
           :visa => '4111 1111 1111 1111',
-          #Laser
-          :laser => '6304 1000 0000 0008'
       }
 
   VALID_CARDS.each_pair do |card, number|
