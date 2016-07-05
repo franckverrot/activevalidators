@@ -26,19 +26,23 @@ This projects follows [Semantic Versioning a.k.a SemVer](http://semver.org). If 
 
 What it means is that you should specify an ActiveValidators version like this :
 
-    gem 'activevalidators', '~> 3.0.0' # <-- mind the patch version
+```ruby
+gem 'activevalidators', '~> 3.0.0' # <-- mind the patch version
+```
 
 Once you have `require`'d the gem, you will have to activate the validators you
 want to use as ActiveValidators doesn't force you to use them all :
 
-    # Activate all the validators
-    ActiveValidators.activate(:all)
+```ruby
+# Activate all the validators
+ActiveValidators.activate(:all)
 
-    # Activate only the email and slug validators
-    ActiveValidators.activate(:email, :slug)
+# Activate only the email and slug validators
+ActiveValidators.activate(:email, :slug)
 
-    # Activate only the phone
-    ActiveValidators.activate(:phone)
+# Activate only the phone
+ActiveValidators.activate(:phone)
+```
 
 `ActiveValidators.activate` can be called as many times as one wants. It's only
 a syntactic sugar on top a normal Ruby `require`.
