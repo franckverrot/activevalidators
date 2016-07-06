@@ -10,6 +10,7 @@
 
 ## CHANGES
 
+  * Ensure a non-nil error message for invalid emails and phone numbers
 
 # 3.3.0
 
