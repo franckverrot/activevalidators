@@ -10,7 +10,7 @@ module ActiveModel
     class SsnValidatorGeneral
       def self.valid?(options, value)
         if options[:type] == :usa_ssn
-          warn "[DEPRECATION] providing {:type => :usa_ssn} is deprecated and will be removed in the future. Please use `:ssn => true` instead."
+          ActiveSupport::Deprecation.warn "providing {:type => :usa_ssn} is deprecated and will be removed in the future. Please use `:ssn => true` instead."
         end
 
         SsnValidatorUSA.new(value).valid?

@@ -50,9 +50,11 @@ describe "SSN validations" do
     end
 
     describe "for valid" do
-      it "accept ssn when it contains correct numbers" do
-        subject = build_ssn_record({:ssn => '444556666'}, {:type => :usa_ssn})
-        subject.valid?.must_equal true
+      it "supports deprecated usa_ssn syntax" do
+        assert_deprecated do
+          subject = build_ssn_record({:ssn => '444556666'}, {:type => :usa_ssn})
+          subject.valid?.must_equal true
+        end
       end
 
       it "accept ssn without type (and use by default 'usa_ssn')" do
