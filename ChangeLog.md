@@ -1,14 +1,21 @@
 # UNRELEASED
 
-# 3.4.0 (unreleased)
+# 4.x.y
 
 ## BREAKING CHANGES
-
- * Dropped support for 1.9.3
 
 ## DEPRECATION
 
 ## CHANGES
+
+
+# 4.0.0
+
+## BREAKING CHANGES
+
+  * Added support for Rails 5! Big thanks to Ross Penman! (@penman) :tada:
+  * Dropped support for 1.9.3
+  * Unping most dependencies
 
 
 # 3.3.0
@@ -25,6 +32,7 @@
   * README: Details about activating AV w/ Rails
   * Spec: Links to dependency gems for convenience; sorting ; code :sparkles:.
   * General: Loosen up the dependency on countries
+
 
 # 3.2.0
 
