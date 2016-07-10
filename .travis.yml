@@ -1,9 +1,8 @@
 language: ruby
 rvm:
-  - 2.1.0
-  - jruby-21mode
+  - 2.2.2
   - ruby-head
   - jruby-head
-  - rbx-2
+  - rbx-3.20
 before_install:
   - gem install bundler

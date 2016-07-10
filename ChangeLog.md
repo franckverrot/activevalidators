@@ -9,12 +9,12 @@
 ## CHANGES
 
 
-# 4.0.0
+# 4.0.0 (Rails 5 support, major update!)
 
 ## BREAKING CHANGES
 
   * Added support for Rails 5! Big thanks to Ross Penman! (@penman) :tada:
-  * Dropped support for 1.9.3
+  * Dropped support for Ruby < 2.2.2
   * Unping most dependencies
 
 
