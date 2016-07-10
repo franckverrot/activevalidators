@@ -1,6 +1,7 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/mock'
+require 'active_support/test_case'
 
 # silence warnings
 old_w, $-w = $-w, false
@@ -20,4 +21,8 @@ class TestRecord
   def initialize(attrs = {})
     attrs.each_pair { |k,v| send("#{k}=", v) }
   end
+end
+
+class Minitest::Spec
+  include ActiveSupport::Testing::Deprecation
 end

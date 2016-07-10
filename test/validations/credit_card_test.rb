@@ -7,8 +7,6 @@ describe "Credit Card Validation" do
       {
           #American Express
           :amex => '3400 0000 0000 009',
-          #Carte Blanche
-          :carte_blanche => '3800 0000 0000 06',
           #Discover
           :discover => '6011 0000 0000 0004',
           #Diners Club
@@ -40,6 +38,18 @@ describe "Credit Card Validation" do
       it "using :credit_card => true" do
         subject = build_card_record({:card => number}, true)
         assert card_is_valid?(subject)
+      end
+    end
+  end
+
+  describe "carte blanche" do
+    it "is deprecated" do
+      subject = build_card_record(
+        { card: '3800 0000 0000 06' },
+        { type: :carte_blanche },
+      )
+      assert_deprecated do
+        card_is_valid?(subject)
       end
     end
   end
