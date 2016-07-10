@@ -15,7 +15,7 @@ describe "Phone Validation" do
       subject.valid?.must_equal true
     end
 
-    it "does not allow numbers from other counties" do
+    it "does not allow numbers from other countries" do
       subject = build_phone_validation(country: :gb)
       subject.phone = '+19999999999'
       subject.valid?.must_equal false
@@ -73,7 +73,9 @@ describe "Phone Validation" do
       subject = build_phone_validation true
       subject.phone = '999'
       subject.valid?.must_equal false
-      subject.errors[:phone].include?(subject.errors.generate_message(:phone, :invalid)).must_equal true
+
+      message = subject.errors.generate_message(:phone, :invalid)
+      subject.errors[:phone].include?(message).must_equal true
     end
   end
 end

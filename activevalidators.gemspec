@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'minitest'
-  s.add_dependency 'rake'          , '>= 0.8.7'
-  s.add_dependency 'activemodel'   , '>= 3.0.0'
-  s.add_dependency 'phony'         , '>= 1.9.0'
-  s.add_dependency 'countries'     , '>= 0.9.3'
+  s.add_dependency 'rake'
   s.add_dependency 'mail'
   s.add_dependency 'date_validator'
-  s.add_dependency 'credit_card_validations', '~> 3.2.2'
+  s.add_dependency 'activemodel'            , '>= 3.0'
+  s.add_dependency 'phony'                  , '~> 2.0'
+  s.add_dependency 'countries'              , '~> 1.2'
+  s.add_dependency 'credit_card_validations', '~> 3.2'
 
   s.files              = `git ls-files`.split("\n")
   s.test_files         = `git ls-files -- {test,spec,features}/*`.split("\n")

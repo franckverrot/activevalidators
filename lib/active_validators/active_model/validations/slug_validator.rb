@@ -3,7 +3,7 @@ module ActiveModel
     class SlugValidator < EachValidator
       def validate_each(record, attribute, value)
         if value.nil?
-          record.errors.add_on_blank(attribute)
+          record.errors.add(attribute, :blank)
         elsif value != value.parameterize
           record.errors.add(attribute)
         end

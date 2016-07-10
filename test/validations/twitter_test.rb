@@ -18,7 +18,9 @@ describe "Twitter Validation" do
   it "generates an error message of type blank" do
     subject = build_twitter_record true
     subject.valid?.must_equal false
-    subject.errors[:twitter_username].include?(subject.errors.generate_message(:twitter_username, :blank)).must_equal true
+
+    message = subject.errors.generate_message(:twitter_username, :blank)
+    subject.errors[:twitter_username].include?(message).must_equal true
   end
 
   describe "for twitter url validator" do

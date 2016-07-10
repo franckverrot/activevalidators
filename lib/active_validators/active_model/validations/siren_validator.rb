@@ -19,7 +19,7 @@ module ActiveModel
 
       def validate_each(record, attribute, value)
         if value.nil?
-          record.errors.add_on_blank(attribute)
+          record.errors.add(attribute, :blank)
         else
           if value.to_s.length != 9
             record.errors.add attribute, :length

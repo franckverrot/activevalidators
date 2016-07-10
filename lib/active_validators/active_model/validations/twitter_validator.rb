@@ -19,7 +19,7 @@ module ActiveModel
         format = options[:format].to_sym if options[:format]
 
         if value.nil?
-          record.errors.add_on_blank(attribute)
+          record.errors.add(attribute, :blank)
         elsif format == :url
           match = value.match(TWITTER_URL_REGEXP)
           record.errors.add(attribute) unless match && !match[1].nil?

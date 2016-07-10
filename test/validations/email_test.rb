@@ -102,9 +102,11 @@ describe "Email Validation" do
     end
 
     it 'generates an error message of type invalid' do
-      subject = build_email_record :email => 'franck.fr'
+      subject = build_email_record :email => 'franck@verrot@fr'
       subject.valid?.must_equal false
-      subject.errors[:email].include?(subject.errors.generate_message(:email, :invalid)).must_equal true
+
+      message = subject.errors.generate_message(:email, :invalid)
+      subject.errors[:email].include?(message).must_equal true
     end
   end
 

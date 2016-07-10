@@ -4,8 +4,21 @@ module ActiveModel
   module Validations
     class PhoneValidator < EachValidator
       def validate_each(record, attribute, value)
-        country_code = ISO3166::Country.new(options[:country].to_s.upcase).country_code unless options[:country].blank?
-        record.errors.add(attribute, options[:message]) if value.blank? || ! (options[:country].blank? ? Phony.plausible?(value) : Phony.plausible?(value, :cc => country_code) )
+        plausible = case (country = options[:country])
+                    when ->(s) { s.blank? }
+                      # Without a country, try to figure out if it sounds like
+                      # a plausible phone number.
+                      Phony.plausible?(value)
+                    else
+                      # In the presence of the country option, provide Phony the country
+                      # code associated with it.
+                      country_code = ISO3166::Country.new(country.to_s.upcase).country_code
+                      Phony.plausible?(value, :cc => country_code)
+                    end
+
+        if !plausible
+          record.errors.add(attribute, :invalid)
+        end
       end
     end
   end

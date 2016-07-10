@@ -7,21 +7,21 @@ module ActiveModel
       end
 
       def validate_each(record, attribute, value)
-        begin
-          mail = Mail::Address.new(value)
+        valid = begin
+                  mail = Mail::Address.new(value)
 
-          valid = basic_check(mail) && value.include?(mail.address)
-        rescue Exception => _
-          valid = false
-        end
+                  basic_check(mail) && value.include?(mail.address)
+                rescue Exception => _
+                  false
+                end
 
         if options[:with]
-          # technically the test suite will pass without the boolean coercion 
+          # technically the test suite will pass without the boolean coercion
           # but we know the code is safer with it in place
           valid &&= !!options[:with].call(mail)
         end
 
-        record.errors.add attribute, (options[:message]) unless valid
+        record.errors.add attribute, (options.fetch(:message, :invalid)) unless valid
       end
 
       def basic_check(mail)
