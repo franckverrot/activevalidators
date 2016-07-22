@@ -73,8 +73,8 @@ end
 class Article
   validates :slug,            :slug => true
   validates :expiration_date, :date => {
-                                          :after => proc { Time.now },
-                                          :before => proc { Time.now + 1.year }
+                                          :after => -> (record) { Time.now },
+                                          :before => -> (record) { Time.now + 1.year }
                                         }
 end
 
