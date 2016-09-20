@@ -9,6 +9,13 @@
 ## CHANGES
 
 
+# 4.0.1
+
+## CHANGES
+
+  * Handle integer postal codes (@penman)
+
+
 # 4.0.0 (Rails 5 support, major update!)
 
 ## BREAKING CHANGES
