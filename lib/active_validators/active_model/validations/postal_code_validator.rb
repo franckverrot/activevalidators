@@ -2,7 +2,7 @@ module ActiveModel
   module Validations
     class PostalCodeValidator < EachValidator
       def validate_each(record, attribute, value)
-        @value = value
+        @value = value.to_s
         unless country = options[:country]
           if country_method = options[:country_method]
             country = record.send(country_method)
