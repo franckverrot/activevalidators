@@ -40,6 +40,16 @@ describe "Postal Code Validation" do
           subject.valid?.must_equal true
           subject.errors.size.must_equal 0
         end
+
+        # if format is entirely numeric
+        if format !~ /[^#\d]/
+          it "should validate format of integer postal code with #{format}" do
+            subject = build_postal_code_record :country => country
+            subject.postal_code = ActiveValidators::OneNineShims::OneNineString.new(format).gsub(/[@#]/, '@' => 'A', '#' => '9').to_i
+            subject.valid?.must_equal true
+            subject.errors.size.must_equal 0
+          end
+        end
       end
     end
   end
