@@ -57,12 +57,12 @@ module ActiveModel
       end
 
       def prefix_not_allocated?
-        forbidden_prefixes = %w[BG, GB, NK, KN, TN, NT, ZZ]
+        forbidden_prefixes = %w[BG GB NK KN TN NT ZZ]
         !forbidden_prefixes.include?(@prefix)
       end
 
       def prefix_not_administrative_number?
-        administrative_prefixes = %w[OO, CR, FY, MW, NC, PP, PY, PZ]
+        administrative_prefixes = %w[OO CR FY MW NC PP PY PZ]
         !administrative_prefixes.include?(@prefix)
       end
     end
