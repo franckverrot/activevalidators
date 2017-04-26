@@ -27,7 +27,7 @@ This projects follows [Semantic Versioning a.k.a SemVer](http://semver.org). If 
 What it means is that you should specify an ActiveValidators version like this :
 
 ```ruby
-gem 'activevalidators', '~> 3.0.0' # <-- mind the patch version
+gem 'activevalidators', '~> 4.0.1' # <-- mind the patch version
 ```
 
 Once you have `require`'d the gem, you will have to activate the validators you
