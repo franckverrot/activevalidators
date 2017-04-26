@@ -8,6 +8,12 @@
 
 ## CHANGES
 
+# 4.0.2
+
+## CHANGES
+
+  * Ensure NINO's prefixes are correct (@alyssais).
+
 
 # 4.0.1
 
