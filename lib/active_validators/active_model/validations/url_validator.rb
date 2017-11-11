@@ -40,6 +40,15 @@ module ActiveModel
         super
       end
 
+      # Public: Validate URL, if it fails adds an error.
+      #
+      # Returns nothing.
+      def validate_each(record, attribute, value)
+        uri = as_uri(value)
+        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp
+      end
+
+      private
       # Internal: Ensures that at least one protocol is defined. If the protocols
       # are empty it throws an ArgumentError.
       #
@@ -72,14 +81,6 @@ module ActiveModel
       # Returns the URI or nil.
       def as_uri(value)
         URI.parse(value.to_s) rescue nil if value.present?
-      end
-
-      # Public: Validate URL, if it fails adds an error.
-      #
-      # Returns nothing.
-      def validate_each(record, attribute, value)
-        uri = as_uri(value)
-        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp
       end
     end
   end
