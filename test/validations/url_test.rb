@@ -8,6 +8,12 @@ describe "Url Validation" do
     TestRecord.new
   end
 
+  def build_url_record_require_tld
+    TestRecord.reset_callbacks(:validate)
+    TestRecord.validates :url, :url => { :require_tld => true }
+    TestRecord.new
+  end
+
   def build_ftp_record
     TestRecord.reset_callbacks(:validate)
     TestRecord.validates :url, :url => 'ftp'
@@ -46,6 +52,13 @@ describe "Url Validation" do
     it "accepts ftp if defined" do
       subject = build_ftp_record
       subject.url = 'ftp://ftp.verrot.fr'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
+
+    it "accepts urls with tld when tld validation is required" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://verrot.fr'
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
@@ -90,6 +103,27 @@ describe "Url Validation" do
     it "rejects invalid protocols" do
       subject = build_url_record
       subject.url = 'ftp://ftp.verrot.fr'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
+    it "rejects urls that have no tld but required tld validation" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://verrot'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
+    it "will not accept domains that end with a dot as a tld" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://verrot.'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
+    it "will not accept domains that start with a dot as a tld" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://.verrot'
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end

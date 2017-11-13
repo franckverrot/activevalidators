@@ -45,7 +45,8 @@ module ActiveModel
       # Returns nothing.
       def validate_each(record, attribute, value)
         uri = as_uri(value)
-        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp
+        tld_requirement_fullfilled = check_tld_requirement(value)
+        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp && tld_requirement_fullfilled
       end
 
       private
@@ -73,6 +74,17 @@ module ActiveModel
       # Returns the Regexp.
       def uri_regexp
         @uri_regexp ||= /\A#{URI::Parser.new.make_regexp(protocols)}\z/
+      end
+
+      # Internal: Checks if the tld requirements are fullfilled
+      #
+      # When :require_tld option is set to true, the url will be searched for
+      # a dot anywhere inside the host except the first or last position
+      #
+      # Returns a boolean value.
+      def check_tld_requirement(value)
+        host = URI.parse(value.to_s).host rescue value
+        options[:require_tld] === true ? host =~ /.(\.)\w+/ : true
       end
 
       # Internal: Tries to convert supplied string into URI,
