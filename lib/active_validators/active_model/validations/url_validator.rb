@@ -90,7 +90,8 @@ module ActiveModel
       # Returns nothing.
       def validate_each(record, attribute, value)
         uri = as_uri(value)
-        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp
+        tld_requirement_fullfilled = check_tld_requirement(value)
+        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp && tld_requirement_fullfilled
       end
     end
   end
