@@ -113,5 +113,19 @@ describe "Url Validation" do
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end
+
+    it "will not accept domains that end with a dot as a tld" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://verrot.'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
+
+    it "will not accept domains that start with a dot as a tld" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://.verrot'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
   end
 end
