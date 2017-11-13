@@ -55,6 +55,13 @@ describe "Url Validation" do
       subject.valid?.must_equal true
       subject.errors.size.must_equal 0
     end
+
+    it "accepts urls with tld when tld validation is required" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://verrot.fr'
+      subject.valid?.must_equal true
+      subject.errors.size.must_equal 0
+    end
   end
 
   describe "for invalid urls" do
