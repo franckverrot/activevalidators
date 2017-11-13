@@ -7,6 +7,12 @@ describe "Url Validation" do
     TestRecord.validates :url, :url => true
     TestRecord.new
   end
+  
+  def build_url_record_require_tld
+    TestRecord.reset_callbacks(:validate)
+    TestRecord.validates :url, :url => { :require_tld => true }
+    TestRecord.new
+  end
 
   def build_ftp_record
     TestRecord.reset_callbacks(:validate)
