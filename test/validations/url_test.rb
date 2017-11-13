@@ -106,5 +106,12 @@ describe "Url Validation" do
       subject.valid?.must_equal false
       subject.errors.size.must_equal 1
     end
+
+    it "rejects urls that have no tld but required tld validation" do
+      subject = build_url_record_require_tld
+      subject.url = 'http://verrot'
+      subject.valid?.must_equal false
+      subject.errors.size.must_equal 1
+    end
   end
 end
