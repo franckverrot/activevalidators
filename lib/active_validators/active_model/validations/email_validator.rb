@@ -1,4 +1,9 @@
 require 'mail'
+
+old_w, $-w = $-w, false
+require 'mail/elements/address'
+$-w = old_w
+
 module ActiveModel
   module Validations
     class EmailValidator < EachValidator

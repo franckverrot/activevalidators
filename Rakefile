@@ -12,10 +12,6 @@ Rake::TestTask.new do |t|
   t.warning = true
 end
 
-# -*- encoding: utf-8 -*-
-$:.unshift File.expand_path("../lib", __FILE__)
-require 'activevalidators'
-
 def gemspec
   @gemspec ||= begin
                  file = File.expand_path('../activevalidators.gemspec', __FILE__)

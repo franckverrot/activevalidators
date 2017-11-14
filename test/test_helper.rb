@@ -1,15 +1,10 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/mock'
-require 'active_support/test_case'
-
-# silence warnings
 old_w, $-w = $-w, false
-
-require 'activevalidators'
-
-# unsilence warnings
+require 'active_support/test_case'
 $-w = old_w
+require 'activevalidators'
 
 class TestRecord
   include ActiveModel::Validations
