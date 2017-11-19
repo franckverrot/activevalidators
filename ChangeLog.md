@@ -8,6 +8,14 @@
 
 ## CHANGES
 
+
+# 4.0.3
+
+## CHANGES
+
+  * UrlValidator: add feature to support TLD validation
+
+
 # 4.0.2
 
 ## CHANGES
