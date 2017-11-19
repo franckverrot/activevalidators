@@ -1,6 +1,6 @@
 # ActiveValidators [![Travis](https://secure.travis-ci.org/franckverrot/activevalidators.png)](http://travis-ci.org/franckverrot/activevalidators)
 
-# Description
+# Description Test
 
 ActiveValidators is a collection of off-the-shelf and tested ActiveModel/ActiveRecord validations.
 
