@@ -8,6 +8,8 @@
 
 ## CHANGES
 
+  * Allow Countries 2.x (@bcm)
+
 
 # 4.0.3
 
