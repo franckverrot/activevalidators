@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = 'activevalidators'
-  s.version     = '4.0.3'
+  s.version     = '4.1.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Franck Verrot', 'Paco Guzmán', 'Oriol Gual', 'Garrett Bjerkhoel', 'Renato Riccieri Santos Zannon', 'Brian Moseley', 'Serj L aka Loremaster']
   s.email       = ['franck@verrot.fr']

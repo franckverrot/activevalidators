@@ -8,6 +8,13 @@
 
 ## CHANGES
 
+# 4.1.0
+
+## CHANGES
+
+  * Relax version constraints around the `countries` gem
+
+
 
 # 4.0.3
 
