@@ -18,6 +18,11 @@ The MediumSecurity trust profile will verify signed gems, but allow the installa
 
 This is necessary because not all of ActiveValidators’ dependencies are signed, so we cannot use HighSecurity.
 
+## Requirements
+
+ * Rails 5.1+
+ * Ruby 2.4+
+
 ## Installation
 
     gem install activevalidators
@@ -27,7 +32,7 @@ This projects follows [Semantic Versioning a.k.a SemVer](http://semver.org). If 
 What it means is that you should specify an ActiveValidators version like this :
 
 ```ruby
-gem 'activevalidators', '~> 4.0.1' # <-- mind the patch version
+gem 'activevalidators', '~> 5.0.0' # <-- mind the patch version
 ```
 
 Once you have `require`'d the gem, you will have to activate the validators you

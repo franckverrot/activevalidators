@@ -1,12 +1,26 @@
 # UNRELEASED
 
-# 4.x.y
+# 5.x.y
 
 ## BREAKING CHANGES
 
 ## DEPRECATION
 
 ## CHANGES
+
+
+# 5.0.0
+
+## BREAKING CHANGES
+
+ * Supports only Rails 5.1+
+ * Stops supporting Rubinius
+ * Stops supporting JRuby
+
+## CHANGES
+
+ * The SIN validator now rejected zero-ed SINs
+
 
 # 4.1.0
 

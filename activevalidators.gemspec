@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
   s.name        = 'activevalidators'
-  s.version     = '4.1.0'
+  s.version     = '5.0.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Franck Verrot', 'Paco Guzmán', 'Oriol Gual', 'Garrett Bjerkhoel', 'Renato Riccieri Santos Zannon', 'Brian Moseley', 'Serj L aka Loremaster']
   s.email       = ['franck@verrot.fr']
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{ActiveValidators is a collection of ActiveModel/ActiveRecord validations}
   s.license     = 'MIT'
 
-  s.required_ruby_version = '>= 2.2.2'
+  s.required_ruby_version = '>= 2.4.4'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'minitest'
