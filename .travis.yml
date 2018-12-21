@@ -1,13 +1,10 @@
 language: ruby
 rvm:
-  - 2.2.8
-  - 2.3.5
-  - 2.4.2
+  - 2.4.4
+  - 2.5.3
   - ruby-head
-  - jruby-head
-  - rubinius-3.86
-matrix:
-  allow_failures:
-    - rvm: rubinius-3.86
 before_install:
   - gem install bundler
+env:
+  - "RAILS_VERSION=5.2.2"
+  - "RAILS_VERSION=5.1.6"
