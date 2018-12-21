@@ -41,11 +41,15 @@ module ActiveModel
       end
 
       def valid?
-        size_is?(9) && allow_permanent_residents? && LuhnChecker.valid?(@sin)
+        size_is?(9) && is_not_full_of_zeroes && allow_permanent_residents? && LuhnChecker.valid?(@sin)
       end
 
       def size_is?(count)
         @sin.size == count
+      end
+
+      def is_not_full_of_zeroes
+        @sin != '000000000'
       end
 
       def allow_permanent_residents?

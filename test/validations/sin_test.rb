@@ -9,6 +9,11 @@ describe "SIN validations" do
         subject.valid?.must_equal false
       end
 
+      it "rejects sin made out of zeroes" do
+        subject = build_sin_record({:sin => '000 000 000'}, {:country => :canada})
+        subject.valid?.must_equal false
+      end
+
       it "rejects empty sin when country is provided" do
         subject = build_sin_record({:sin => ''}, {:country => :canada })
         subject.valid?.must_equal false
