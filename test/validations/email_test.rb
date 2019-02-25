@@ -110,6 +110,7 @@ describe "Email Validation" do
     end
   end
 
+  before { TestRecord.reset_callbacks(:validate) }
   it "checks validity of the arguments" do
     [3, "foo", 1..6].each do |wrong_argument|
       assert_raises(ArgumentError,"Not a callable object #{wrong_argument.inspect}") do

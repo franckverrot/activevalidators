@@ -9,10 +9,15 @@ ActiveValidators.activate(:date)
 # [on Github](https://github.com/codegram/date_validator)
 describe "Date Validation" do
   it "finds the translations" do
-    TestRecord.validates :start_date, :date => {:before => :end_date }
-    d = TestRecord.new(:start_date => Time.now, :end_date => Time.now - 1)
+    d = build_date_record
 
     refute d.valid?
     refute_includes d.errors.to_s, 'translation missing'
+  end
+
+  def build_date_record
+    TestRecord.reset_callbacks(:validate)
+    TestRecord.validates :start_date, :date => { :before => :end_date }
+    TestRecord.new(:start_date => Time.now, :end_date => Time.now - 1)
   end
 end
