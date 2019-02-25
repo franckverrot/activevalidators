@@ -176,18 +176,11 @@ Lots of improvements can be made:
 
 ## Contributors
 
-* Franck Verrot
-* Oriol Gual
-* Paco Guzmán
-* Garrett Bjerkhoel
-* Renato Riccieri Santos Zannon
-* Brian Moseley
-* Travis Vachon
-* Rob Zuber
-* Manuel Menezes de Sequeira
-* Serj L aka Loremaster
-* Pierre-Baptiste Béchu
+Please checkout [AUTHORS.md](authors) to see who contributed.  Get involved!
+
 
 ## Copyright
 
 Copyright (c) 2010-2018 Franck Verrot. MIT LICENSE. See LICENSE for details.
+
+[authors]: https://github.com/franckverrot/activevalidators/blob/master/AUTHORS.md

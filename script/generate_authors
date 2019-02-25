@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+cat << EOF > AUTHORS.md
+# Authors
+
+In alphabetical order:
+
+EOF
+
+git log --pretty=format:"  * %an" | sort -u >> AUTHORS.md
