@@ -8,6 +8,8 @@
 
 ## CHANGES
 
+ * Ditch Travis CI in favor or CircleCI
+
 
 # 5.0.1
 

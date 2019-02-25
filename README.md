@@ -1,4 +1,4 @@
-# ActiveValidators [![Travis](https://secure.travis-ci.org/franckverrot/activevalidators.png)](http://travis-ci.org/franckverrot/activevalidators)
+# ActiveValidators [![CircleCI](https://circleci.com/gh/franckverrot/activevalidators.svg?style=svg)](https://circleci.com/gh/franckverrot/activevalidators)
 
 # Description
 
