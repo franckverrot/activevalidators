@@ -1,0 +1,84 @@
+version: 2
+
+shared: &shared
+  working_directory: ~/repo
+  steps:
+    - checkout
+
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+    - run:
+        name: install dependencies
+        command: |
+          bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+    - save_cache:
+        paths:
+          - ./vendor/bundle
+        key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+    # run tests!
+    - run:
+        name: run tests
+        command: bundle exec rake
+
+jobs:
+  # RAILS_VERSION=5.1.6
+  "ruby-2.4/rails-5.1.6":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.4
+    environment:
+      RAILS_VERSION=5.1.6
+
+  "ruby-2.5/rails-5.1.6":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.5
+    environment:
+      RAILS_VERSION=5.1.6
+
+  "ruby-2.6/rails-5.1.6":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.6
+    environment:
+      RAILS_VERSION=5.1.6
+
+  # RAILS_VERSION=5.2.2
+  "ruby-2.4/rails-5.2.2":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.4
+    environment:
+      RAILS_VERSION=5.2.2
+
+  "ruby-2.5/rails-5.2.2":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.5
+    environment:
+      RAILS_VERSION=5.2.2
+
+  "ruby-2.6/rails-5.2.2":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.6
+    environment:
+      RAILS_VERSION=5.2.2
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - "ruby-2.4/rails-5.1.6"
+      - "ruby-2.5/rails-5.1.6"
+      - "ruby-2.6/rails-5.1.6"
+      - "ruby-2.4/rails-5.2.2"
+      - "ruby-2.5/rails-5.2.2"
+      - "ruby-2.6/rails-5.2.2"
