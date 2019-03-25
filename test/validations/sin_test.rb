@@ -34,6 +34,11 @@ describe "SIN validations" do
         subject.valid?.must_equal false
       end
 
+      it "rejects valid business numbers by default" do
+        subject = build_sin_record({:sin => '897 454 286'}, {:country => :canada })
+        subject.valid?.must_equal false
+      end
+
       it "rejects invalid sin for permanent residents" do
         subject = build_sin_record({:sin => '123 456 789'}, {:country => :canada })
         subject.valid?.must_equal false
@@ -54,6 +59,12 @@ describe "SIN validations" do
       it "accept valid sin for temporary residents when flag is provided" do
         subject = build_sin_record({:sin => '996 454 286'},
                                    {:country => :canada, :country_options => { allow_permanent_residents: true } })
+        subject.valid?.must_equal true
+      end
+
+      it "accept valid business numbers when flag is provided" do
+        subject = build_sin_record({:sin => '897 454 286'},
+                                   {:country => :canada, :country_options => { allow_business_numbers: true } })
         subject.valid?.must_equal true
       end
     end

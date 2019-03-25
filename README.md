@@ -124,7 +124,7 @@ Exhaustive list of supported validators and their implementation:
 * `respond_to` : generic Ruby `respond_to`
 * `siren` : [SIREN](http://fr.wikipedia.org/wiki/SIREN) company numbers in France
 * `slug`  : based on `ActiveSupport::String#parameterize`
-* `sin` : Social Insurance Number (only for Canada). You may also allow permanent resident cards (such cards start with '9'): `:sin => {:country => :canada, :country_options => {allow_permanent_residents: true}}`
+* `sin` : Social Insurance Number (only for Canada). You may also allow permanent resident cards (such cards start with '9') or business numbers (such numbers start with '8'): `:sin => {:country => :canada, :country_options => {allow_permanent_residents: true, allow_business_numbers: true}}`
 * `ssn` : Social Security Number (only for USA).
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
