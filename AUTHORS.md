@@ -2,6 +2,7 @@
 
 In alphabetical order:
 
+  * Abe Fehr
   * Alyssa Ross
   * Brian Moseley
   * Cédric FABIANSKI

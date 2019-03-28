@@ -8,7 +8,17 @@
 
 ## CHANGES
 
+
+# 5.1.0
+
+## BREAKING CHANGES
+
+## DEPRECATION
+
+## CHANGES
+
  * Ditch Travis CI in favor or CircleCI
+ * Disallow business numbers from SIN validation
 
 
 # 5.0.1
