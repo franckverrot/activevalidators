@@ -8,6 +8,9 @@
 
 ## CHANGES
 
+ * Add support for Rails 6
+ * Add support for Ruby 2.7
+
 
 # 5.1.0
 
