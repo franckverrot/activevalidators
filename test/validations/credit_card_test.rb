@@ -79,14 +79,14 @@ describe "Credit Card Validation" do
   end
 
   def card_is_valid?(subject)
-    subject.valid?.must_equal true
-    subject.errors.size.must_equal 0
+    _(subject.valid?).must_equal(true)
+    _(subject.errors.size).must_equal(0)
   end
 
   def card_is_invalid?(subject)
-    subject.valid?.must_equal false
-    subject.errors.size.must_equal 1
-    subject.errors[:card].include?(subject.errors.generate_message(:card, :invalid)).must_equal true
+    _(subject.valid?).must_equal(false)
+    _(subject.errors.size).must_equal(1)
+    _(subject.errors[:card].include?(subject.errors.generate_message(:card, :invalid))).must_equal(true)
   end
 
 end

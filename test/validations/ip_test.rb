@@ -6,27 +6,27 @@ describe "IP Validation" do
   describe "IPv4 Validation" do
     it "accepts valid IPs" do
       subject = build_ip_record :v4, :ip => '192.168.1.1'
-      subject.valid?.must_equal true
-      subject.errors.size.must_equal 0
+      _(subject.valid?).must_equal(true)
+      _(subject.errors.size).must_equal(0)
     end
 
     it "accepts IPAddrs" do
       subject = build_ip_record :v4, :ip => IPAddr.new('192.168.1.1')
-      subject.valid?.must_equal true
-      subject.errors.size.must_equal 0
+      _(subject.valid?).must_equal(true)
+      _(subject.errors.size).must_equal(0)
     end
 
     describe "for invalid IPs" do
       it "rejects invalid IPs" do
         subject = build_ip_record :v4, :ip => '267.34.56.3'
-        subject.valid?.must_equal false
-        subject.errors.size.must_equal 1
+        _(subject.valid?).must_equal(false)
+        _(subject.errors.size).must_equal(1)
       end
 
       it "generates an error message of type invalid" do
         subject = build_ip_record  :v4, :ip => '267.34.56.3'
-        subject.valid?.must_equal false
-        subject.errors[:ip].include?(subject.errors.generate_message(:ip, :invalid)).must_equal true
+        _(subject.valid?).must_equal(false)
+        _(subject.errors[:ip].include?(subject.errors.generate_message(:ip, :invalid))).must_equal(true)
       end
     end
   end
@@ -34,27 +34,27 @@ describe "IP Validation" do
   describe "IPv6 Validation" do
     it "accepts valid IPs" do
       subject = build_ip_record :v6, :ip => '::1'
-      subject.valid?.must_equal true
-      subject.errors.size.must_equal 0
+      _(subject.valid?).must_equal(true)
+      _(subject.errors.size).must_equal(0)
     end
 
     it "accepts IPAddrs" do
       subject = build_ip_record :v6, :ip => IPAddr.new('::1')
-      subject.valid?.must_equal true
-      subject.errors.size.must_equal 0
+      _(subject.valid?).must_equal(true)
+      _(subject.errors.size).must_equal(0)
     end
 
     describe "for invalid IPs" do
       it "rejects invalid IPs" do
         subject = build_ip_record :v6, :ip => '192.168.1.1'
-        subject.valid?.must_equal false
-        subject.errors.size.must_equal 1
+        _(subject.valid?).must_equal(false)
+        _(subject.errors.size).must_equal(1)
       end
 
       it "generates an error message of type invalid" do
         subject = build_ip_record :v6, :ip => '192.168.1.1'
-        subject.valid?.must_equal false
-        subject.errors[:ip].include?(subject.errors.generate_message(:ip, :invalid)).must_equal true
+        _(subject.valid?).must_equal(false)
+        _(subject.errors[:ip].include?(subject.errors.generate_message(:ip, :invalid))).must_equal(true)
       end
     end
   end
