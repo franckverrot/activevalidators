@@ -14,42 +14,42 @@ describe "Hex-Color Validation" do
   it "accepts blank value" do
     subject.text_color = ''
 
-    subject.must_be :valid?
-    subject.errors.must_be :empty?
+    _(subject).must_be(:valid?)
+    _(subject.errors).must_be(:empty?)
   end
 
   it "accepts 3 hex characters" do
     subject.text_color = 'abc'
 
-    subject.must_be :valid?
-    subject.errors.must_be :empty?
+    _(subject).must_be(:valid?)
+    _(subject.errors).must_be(:empty?)
   end
 
   it "accepts 6 hex characters" do
     subject.text_color = 'abc012'
 
-    subject.must_be :valid?
-    subject.errors.must_be :empty?
+    _(subject).must_be(:valid?)
+    _(subject.errors).must_be(:empty?)
   end
 
   it "rejects non-hex characters" do
     subject.text_color = 'efg345'
 
-    subject.must_be :invalid?
-    subject.errors[:text_color].must_include invalid_message
+    _(subject).must_be(:invalid?)
+    _(subject.errors[:text_color]).must_include(invalid_message)
   end
 
   it "rejects too few characters" do
     subject.text_color = 'ef'
 
-    subject.must_be :invalid?
-    subject.errors[:text_color].must_include invalid_message
+    _(subject).must_be(:invalid?)
+    _(subject.errors[:text_color]).must_include(invalid_message)
   end
 
   it "rejects too many characters" do
     subject.text_color = 'efab001'
 
-    subject.must_be :invalid?
-    subject.errors[:text_color].must_include invalid_message
+    _(subject).must_be(:invalid?)
+    _(subject.errors[:text_color]).must_include(invalid_message)
   end
 end

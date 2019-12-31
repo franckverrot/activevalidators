@@ -14,22 +14,22 @@ describe "Regexp Validation" do
   it "accepts blank value" do
     subject.redirect_rule = ''
 
-    subject.must_be :valid?
-    subject.errors.must_be :empty?
+    _(subject).must_be(:valid?)
+    _(subject.errors).must_be(:empty?)
   end
 
   it "rejects malformed regular expressions" do
     subject.redirect_rule = '['
 
-    subject.must_be :invalid?
-    subject.errors[:redirect_rule].must_include invalid_message
+    _(subject).must_be(:invalid?)
+    _(subject.errors[:redirect_rule]).must_include(invalid_message)
   end
 
   it "allow proper regular expressions" do
     subject.redirect_rule = '^/vanity-url(-2014)?'
 
-    subject.must_be :valid?
-    subject.errors.must_be :empty?
+    _(subject).must_be(:valid?)
+    _(subject.errors).must_be(:empty?)
   end
 
 end

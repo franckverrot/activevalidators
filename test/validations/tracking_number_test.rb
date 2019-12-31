@@ -13,16 +13,16 @@ describe "Tracking Number Validation" do
   def assert_valid_tracking_number(carrier_opts, tracking_number, &block)
     subject = build_tracking_number_record(carrier_opts, &block)
     subject.tracking_number = tracking_number
-    subject.valid?.must_equal true
-    subject.errors.size.must_equal 0
+    _(subject.valid?).must_equal(true)
+    _(subject.errors.size).must_equal(0)
   end
 
   def assert_invalid_tracking_number(carrier_opts, tracking_number, &block)
     subject = build_tracking_number_record(carrier_opts, &block)
     subject.tracking_number = tracking_number
-    subject.valid?.must_equal false
-    subject.errors.size.must_equal 1
-    subject.errors[:tracking_number].must_include subject.errors.generate_message(:tracking_number, :invalid)
+    _(subject.valid?).must_equal(false)
+    _(subject.errors.size).must_equal(1)
+    _(subject.errors[:tracking_number]).must_include(subject.errors.generate_message(:tracking_number, :invalid))
   end
 
   describe "when no carrier parameter is given" do

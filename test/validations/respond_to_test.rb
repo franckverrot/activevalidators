@@ -14,21 +14,21 @@ describe "Respond To Validation" do
     subject.global_condition = true
     subject.local_condition = true
 
-    subject.valid?.must_equal true
-    subject.errors.size.must_equal 0
+    _(subject.valid?).must_equal(true)
+    _(subject.errors.size).must_equal(0)
   end
 
   describe "when does not respond_to?" do
     it "rejects the responder" do
       subject = build_respond_to_record :responder => 42, :global_condition => true, :local_condition => true
-      subject.valid?.must_equal false
-      subject.errors.size.must_equal 1
+      _(subject.valid?).must_equal(false)
+      _(subject.errors.size).must_equal(1)
     end
 
     it "generates an error message of type invalid" do
       subject = build_respond_to_record :responder => 42, :global_condition => true, :local_condition => true
-      subject.valid?.must_equal false
-      subject.errors[:responder].include?(subject.errors.generate_message(:responder, :invalid)).must_equal true
+      _(subject.valid?).must_equal(false)
+      _(subject.errors[:responder].include?(subject.errors.generate_message(:responder, :invalid))).must_equal(true)
     end
   end
 end

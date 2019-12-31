@@ -13,22 +13,22 @@ describe "Password Validation" do
       describe "valid passwords" do
         it "accepts a #{strength} password like #{passwords[:valid]}" do
           subject = build_password_record strength, :password => passwords[:valid]
-          subject.valid?.must_equal true
-          subject.errors.size.must_equal 0
+          _(subject.valid?).must_equal(true)
+          _(subject.errors.size).must_equal(0)
         end
       end
 
       describe "invalid passwords" do
         it "rejects invalid passwords like #{passwords[:invalid]}" do
           subject = build_password_record strength, :password => passwords[:invalid]
-          subject.valid?.must_equal false
-          subject.errors.size.must_equal 1
+          _(subject.valid?).must_equal(false)
+          _(subject.errors.size).must_equal(1)
         end
 
         it "generates an error message of type invalid" do
           subject = build_password_record strength, :password => passwords[:invalid]
-          subject.valid?.must_equal false
-          subject.errors[:password].include?(subject.errors.generate_message(:password, :invalid)).must_equal true
+          _(subject.valid?).must_equal(false)
+          _(subject.errors[:password].include?(subject.errors.generate_message(:password, :invalid))).must_equal(true)
         end
       end
     end
