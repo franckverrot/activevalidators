@@ -28,57 +28,73 @@ shared: &shared
         command: bundle exec rake
 
 jobs:
-  # RAILS_VERSION=5.1.6
-  "ruby-2.4/rails-5.1.6":
+  # RAILS_VERSION=5.1.7
+  "ruby-2.4/rails-5.1.7":
     <<: *shared
     docker:
       - image: circleci/ruby:2.4
     environment:
-      RAILS_VERSION=5.1.6
+      RAILS_VERSION=5.1.7
 
-  "ruby-2.5/rails-5.1.6":
+  "ruby-2.5/rails-5.1.7":
     <<: *shared
     docker:
       - image: circleci/ruby:2.5
     environment:
-      RAILS_VERSION=5.1.6
+      RAILS_VERSION=5.1.7
 
-  "ruby-2.6/rails-5.1.6":
+  "ruby-2.6/rails-5.1.7":
     <<: *shared
     docker:
       - image: circleci/ruby:2.6
     environment:
-      RAILS_VERSION=5.1.6
+      RAILS_VERSION=5.1.7
 
-  # RAILS_VERSION=5.2.2
-  "ruby-2.4/rails-5.2.2":
+  "ruby-2.7/rails-5.1.7":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.7
+    environment:
+      RAILS_VERSION=5.1.7
+
+  # RAILS_VERSION=5.2.4
+  "ruby-2.4/rails-5.2.4":
     <<: *shared
     docker:
       - image: circleci/ruby:2.4
     environment:
-      RAILS_VERSION=5.2.2
+      RAILS_VERSION=5.2.4
 
-  "ruby-2.5/rails-5.2.2":
+  "ruby-2.5/rails-5.2.4":
     <<: *shared
     docker:
       - image: circleci/ruby:2.5
     environment:
-      RAILS_VERSION=5.2.2
+      RAILS_VERSION=5.2.4
 
-  "ruby-2.6/rails-5.2.2":
+  "ruby-2.6/rails-5.2.4":
     <<: *shared
     docker:
       - image: circleci/ruby:2.6
     environment:
-      RAILS_VERSION=5.2.2
+      RAILS_VERSION=5.2.4
+
+  "ruby-2.7/rails-5.2.4":
+    <<: *shared
+    docker:
+      - image: circleci/ruby:2.7
+    environment:
+      RAILS_VERSION=5.2.4
 
 workflows:
   version: 2
   build:
     jobs:
-      - "ruby-2.4/rails-5.1.6"
-      - "ruby-2.5/rails-5.1.6"
-      - "ruby-2.6/rails-5.1.6"
-      - "ruby-2.4/rails-5.2.2"
-      - "ruby-2.5/rails-5.2.2"
-      - "ruby-2.6/rails-5.2.2"
+      - "ruby-2.4/rails-5.1.7"
+      - "ruby-2.5/rails-5.1.7"
+      - "ruby-2.6/rails-5.1.7"
+      - "ruby-2.7/rails-5.1.7"
+      - "ruby-2.4/rails-5.2.4"
+      - "ruby-2.5/rails-5.2.4"
+      - "ruby-2.6/rails-5.2.4"
+      - "ruby-2.7/rails-5.2.4"
