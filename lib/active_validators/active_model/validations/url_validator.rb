@@ -1,10 +1,10 @@
 require 'active_support/core_ext/array/wrap'
-require 'uri'
+require 'addressable'
 
 module ActiveModel
   module Validations
 
-    # Public: Uses `URI.regexp` to validate URLs, by default only allows
+    # Public: Uses `Addressable::URI.parse` to validate URLs, by default only allows
     # the http and https protocols.
     #
     # Examples
@@ -46,7 +46,7 @@ module ActiveModel
       def validate_each(record, attribute, value)
         uri = as_uri(value)
         tld_requirement_fullfilled = check_tld_requirement(value)
-        record.errors.add(attribute) unless uri && value.to_s =~ uri_regexp && tld_requirement_fullfilled
+        record.errors.add(attribute) unless uri && uri.scheme.in?(protocols) && tld_requirement_fullfilled
       end
 
       private
@@ -68,14 +68,6 @@ module ActiveModel
         Array.wrap(options[:protocols] || %w{http https})
       end
 
-      # Internal: Constructs the regular expression to check
-      # the URI for the configured protocols.
-      #
-      # Returns the Regexp.
-      def uri_regexp
-        @uri_regexp ||= /\A#{URI::Parser.new.make_regexp(protocols)}\z/
-      end
-
       # Internal: Checks if the tld requirements are fullfilled
       #
       # When :require_tld option is set to true, the url will be searched for
@@ -83,7 +75,7 @@ module ActiveModel
       #
       # Returns a boolean value.
       def check_tld_requirement(value)
-        host = URI.parse(value.to_s).host rescue value
+        host = Addressable::URI.parse(value.to_s).host rescue value
         options[:require_tld] === true ? host =~ /.(\.)\w+/ : true
       end
 
@@ -92,7 +84,7 @@ module ActiveModel
       #
       # Returns the URI or nil.
       def as_uri(value)
-        URI.parse(value.to_s) rescue nil if value.present?
+        Addressable::URI.parse(value.to_s) rescue nil if value.present?
       end
     end
   end

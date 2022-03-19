@@ -1,4 +1,5 @@
 require 'test_helper'
+
 ActiveValidators.activate(:url)
 
 describe "Url Validation" do
@@ -49,6 +50,20 @@ describe "Url Validation" do
       _(subject.errors.size).must_equal(0)
     end
 
+    it "accepts valid urls with non-ascii domain name" do
+      subject = build_url_record
+      subject.url = 'https://www.詹姆斯.com'
+      _(subject.valid?).must_equal(true)
+      _(subject.errors.size).must_equal(0)
+    end
+
+    it "accepts valid urls with non-ascii path" do
+      subject = build_url_record
+      subject.url = 'https://www.example.com/ουτοπία'
+      _(subject.valid?).must_equal(true)
+      _(subject.errors.size).must_equal(0)
+    end
+
     it "accepts ftp if defined" do
       subject = build_ftp_record
       subject.url = 'ftp://ftp.verrot.fr'
@@ -67,7 +82,7 @@ describe "Url Validation" do
   describe "for invalid urls" do
     it "rejects invalid urls" do
       subject = build_url_record
-      subject.url = 'http://^^^^.fr'
+      subject.url = 'http://in va lid.fr'
       _(subject.valid?).must_equal(false)
       _(subject.errors.size).must_equal(1)
     end
@@ -81,7 +96,7 @@ describe "Url Validation" do
 
     it "generates an error message of type invalid" do
       subject = build_url_record
-      subject.url = 'http://^^^^.fr'
+      subject.url = 'http://in va lid.fr'
       _(subject.valid?).must_equal(false)
       _(subject.errors[:url].include?(subject.errors.generate_message(:url, :invalid))).must_equal(true)
     end

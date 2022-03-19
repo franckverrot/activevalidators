@@ -128,7 +128,7 @@ Exhaustive list of supported validators and their implementation:
 * `ssn` : Social Security Number (only for USA).
 * `tracking_number`: based on a set of predefined masks
 * `twitter` : based on a regular expression
-* `url`   : based on a regular expression
+* `url`   : based on [`Addressable`](https://github.com/sporkmonger/addressable) gem
 
 
 ### Handling error messages
