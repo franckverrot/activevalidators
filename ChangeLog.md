@@ -8,6 +8,15 @@
 
 ## CHANGES
 
+# 6.0.1
+
+## BREAKING CHANGES
+
+## DEPRECATION
+
+## CHANGES
+
+ * Unlock Countries gem v4
 
 # 6.0.0
 
